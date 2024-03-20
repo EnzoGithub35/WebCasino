@@ -190,3 +190,59 @@
 
     </body>
 </html>
+
+
+<div>
+  <img class="" src="" alt="">
+  <h1 class="">Connexion:</h1>
+</div>
+<div class="container">
+<form method="post" class="" action="">
+
+
+<div class="form-control">
+  <input type="text"  name="pseudo" required><br>
+  <label for="pseudo">Pseudo :</label>
+</div>
+
+
+<div class="form-control">
+  <input type="password" name="mdp" required><br>
+  <label for="mdp">Mot de passe :</label>
+</div>
+
+    <input type="submit" class="btn" name="valider" value="Valider">
+</form>
+
+</div>
+
+
+<main class="">
+  <div class="container">  
+<h1>Please Login</h1>  
+<form method="post">  
+<div class="form-control">  
+<input type="text" name="pseudo" required>  
+<label for="pseudo">Pseudo</label>  
+  </div> 
+<div class="form-control">    
+  <input type="text"  name="Nom" required value="">
+  <label for="Nom">Nom</label>
+  </div> 
+<div class="form-control">    
+  <input type="text"  name="Prenom" required value="">
+  <label for="Prenom">Prénom</label>
+  </div>
+<div class="form-control">
+  <input type="email"  name="email" required>
+  <label for="email">Email</label>
+  </div>
+<div class="form-control">  
+<input type="password" name="mdp" required>  
+<label for="mdp">Password</label>  
+</div>  
+<button class="btn">Inscription</button>  
+<p class="text">Déjà un compte ?<a href="#">Connectez vous !</a> </p> 
+
+<script src="script.js"></script>
+  <a href="index.html"> <button> retour </button>

@@ -1,5 +1,352 @@
-/* Show it's not fixed to the top */
-body {
-    min-height: 75rem;
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.current-page {
+  background-color: orange;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  animation-duration: 1.5s;
+  animation-name: fade;
+}
+
+.topnav a:hover {
+  background-color: #F4bc5b;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #F4bc5b;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
   }
-  
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a,div {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+  /* Dropdown Button */
+.dropbtn {
+  color: white;
+  padding: auto;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #F4bc5b;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #333;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  animation-duration: 1.5s;
+  animation-name: fade;
+
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: white;
+  padding: 14px 14px;
+  text-decoration: none;
+  display: flex;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
+/* PEN STYLES ========== */
+
+.grid-container {
+  width: 80%;
+  max-width: 1200px;
+  position: relative;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.test_box {
+	padding: 0;
+}
+.test_box .inner {
+	background: #333;
+	display: block;
+	margin: 10px;
+	overflow: hidden;
+}
+.test_box .inner .test_click {
+	-webkit-align-content: center;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	background-color: rgba(0,0,0,.1);
+	color: #fff;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+	height: 300px;
+	mix-blend-mode: normal;
+	text-align: center;
+	text-decoration: none;
+	-webkit-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+
+
+
+
+.flex_this {
+	-webkit-align-content: center;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	display: inherit;
+	flex-wrap: inherit;
+	height: auto;
+	margin: 0;
+	padding: 10px;
+	-webkit-transition: all 300ms ease;
+	transition: all 300ms ease;
+	width: 100%;
+
+}
+.test_box .inner .test_click:hover .flex_this {
+	margin-top: -5px;
+}
+
+.title {
+	display: block;
+	font-weight: 700;
+	margin: 0 0 20px;
+	width: 100%;
+  font-size: 3vw;
+  margin-bottom: 50px;
+  color: white;
+  transition: .25s;
+}
+
+
+.title:hover {
+  color: #F4bc5b;
+  text-shadow: 0  0 10px #F4bc5b,
+  0  0 20px #F4bc5b,
+  0  0 40px #F4bc5b;
+}
+
+
+
+.test_link {
+	border: 2px solid #fff;
+	display: inline-block;
+	font-size: .8em;
+	font-weight: 700;
+	letter-spacing: .1em;
+	margin: 0 auto;
+	padding: 10px 30px;
+	text-transform: uppercase;
+}
+
+
+
+.box-image-1 {
+  background-image: url(images/blackjack.jpg);
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.box-image-2 {
+  background-image: url(images/PFC.jpg);
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+	background-size: cover;
+  width: 100%;
+  height: 100%;
+
+}
+
+.box-image-3 {
+  background-image: url(images/PoFgif.webp);
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+	background-size: cover;
+  width: 100%;
+  height: 100%;
+
+}
+
+.box-image-4 {
+  background-image: url(images/portrait-1.jpg);
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+	background-size: cover;
+  width: 100%;
+  height: 100%;
+
+}
+
+.box-image-5 {
+  background-image: url(images/portrait-1.jpg);
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+	background-size: cover;
+  width: 100%;
+  height: 100%;
+
+}
+
+.box-image-6 {
+  background-image: url(images/portrait-1.jpg);
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+	background-size: cover;
+  width: 100%;
+  height: 100%;
+
+}
+
+
+
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #333;
+    color: #fff;
+    font-family: "Muli", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    margin-top: 20px;
+}
+.container {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px 40px;
+    border-radius: 5px;
+}
+.container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.container a {
+    text-decoration: none;
+    color: #F4bc5b;
+}
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    background: #F4bc5b;
+    padding: 15px;
+    font-family: inherit;
+    font-size: 16px;
+    border: 0;
+    border-radius: 5px;
+}
+.btn:focus {
+    outline: 0;
+}
+.btn:active {
+    transform: scale(0.98);
+}
+.text {
+    margin-top: 30px;
+}
+.form-control {
+    position: relative;
+    margin: 20px 0 40px;
+    width: 300px;
+}
+.form-control input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px #fff solid;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #fff;
+}
+.form-control input:focus,
+.form-control input:valid {
+    outline: 0;
+    border-bottom-color: #F4bc5b;
+}
+.form-control label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none;
+}
+.form-control label span {
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+    color: #F4bc5b;
+    transform: translateY(-30px);
+}
+
+

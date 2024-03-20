@@ -1,0 +1,35 @@
+REACT.js : utile pour java script, pas besoin de reaload la page
+
+linear.app : permet de gérer les tickets 
+
+mailtrap: utile pour gérer les mails, et les envoyer depuis le code
+
+DRIBBLE : inspiratiob pour les sites (y a des dingueries)
+
+tailwincss : framework css
+nes.css : la meme
+bulma.io : la meme
+
+particle.js : INCROYABLE POUR LES animations
+animate.css : PAREILLLL
+
+moment.js : pour les dates
+
+chart.js : graphique avec des données
+
+laravel : framework php
+
+autoprefixer : indispensable pour mettre son css compatible sur tout les navigateurs
+
+css minifier : pour réduire la taille de son css (gagner de l'espace) : ressemble a un fichier bootstrap
+
+js obfuscator : pour "hasher" son js et qu'il soit illisible à l'oeil humain
+
+Stripe : pour faire tout ce qui est paiement
+
+Dribble : maquette de site
+
+
+page pour changer 
+
+utiliser socket js
