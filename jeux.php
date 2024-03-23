@@ -7,11 +7,54 @@
     <title>Document</title>
 </head>
 
+<header style="width: 100%;">
+    <div class="topnav" id="myTopnav">
+        <a href="index.php" >Accueil</a>
+        <a href="connexion.php">Connexion</a>
+        <a href="inscription.php">Inscription</a>
+        <a onclick="myFunction2()" class="dropbtn current-page">Jeux</a>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="blackjack_test.php">Blackjack</a>
+            <a href="shifumi.php">Shifumi</a>
+            <a href="Pile_ou_face.php">Pile ou Face</a>
+        </div>
+        <?php
+            include_once "config.php"; // Inclure le fichier de configuration
+            session_start();
+
+            // Vérifier si l'utilisateur est connecté
+            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+                // Requête pour récupérer le pseudo de l'utilisateur connecté depuis la base de données
+                $sql = "SELECT pseudo FROM utilisateur WHERE IdUtilisateur = :id";
+
+                try {
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->bindParam(":id", $_SESSION["id"], PDO::PARAM_INT);
+                    $stmt->execute();
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    if($row) {
+                        // Afficher le pseudo de l'utilisateur
+                        echo "<span id='user-info' class='user-info'>Connecté en tant que : " . $row['pseudo'] . "</span>";
+                    }
+                } catch(PDOException $e) {
+                    echo "Erreur : " . $e->getMessage();
+                }
+            } else {
+                // Si l'utilisateur n'est pas connecté
+                echo "<span id='user-info' class='user-info'>Non connecté</span>";
+            }
+        ?>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</header>
+
+<script src="script.js"></script>
+
 <body style="background-color: #333;">
 <main>
-<h1> <span id="score"></span></h1>
-    <button id="addPointBtn">Ajouter un point</button>
-
     <script>
         document.getElementById('addPointBtn').addEventListener('click', function() {
             // Effectuer une requête AJAX pour incrémenter le score côté serveur
@@ -34,7 +77,7 @@
   <div class="grid-container">
     <div class="test_box box-01 col-xs-6 col-md-4">
       <div class="inner">
-        <a href="blackjack_test.php?id=<?=$_GET['id']?>" class="test_click box-image-1">
+        <a href="blackjack_test.php" class="test_click box-image-1">
           
           <div class="flex_this ">
             <h3 class="title"> Blackjack</h3>
@@ -46,7 +89,7 @@
     </div>
     <div class="test_box box-02 col-xs-6 col-md-4">
       <div class="inner">
-        <a href="shifumi.php?id=<?=$_GET['id']?>" class="test_click box-image-2">
+        <a href="shifumi.php" class="test_click box-image-2">
           
           <div class="flex_this">
             <h3 class="title"> shifumi</h3>
@@ -57,7 +100,7 @@
     </div>
     <div class="test_box box-03 col-xs-6 col-md-4">
       <div class="inner">
-        <a href="Pile_ou_face.php?id=<?=$_GET['id']?>" class="test_click box-image-3">
+        <a href="Pile_ou_face.php" class="test_click box-image-3">
           <div class="flex_this">
             <h3 class="title"> Pile ou face</h3>
             <span class="test_link">Jouez</span>
@@ -67,7 +110,7 @@
     </div>
     <div class="test_box box-04 col-xs-6 col-md-4">
       <div class="inner">
-        <a href="index.html" class="test_click box-image-4">
+        <a href="index.php" class="test_click box-image-4">
           <div class="flex_this">
             <h3 class="title"> Accueil</h3>
             <span class="test_link">Jouez</span>
@@ -77,7 +120,7 @@
     </div>
     <div class="test_box box-05 col-xs-6 col-md-4">
       <div class="inner">
-        <a href="blackjack.php?id=<?=$_GET['id']?>" class="test_click box-image-5">
+        <a href="blackjack.php" class="test_click box-image-5">
           <div class="flex_this">
             <h3 class="title"> test BJ</h3>
             <span class="test_link">Jouez</span>
@@ -100,18 +143,7 @@
 
     
 
-<?php
-// Vérifier si le paramètre "index" est défini dans la requête GET
-if (isset($_GET['index'])) {
-    // Détruire la session
-    session_start();
-    session_unset();
-    session_destroy();
-    // Rediriger vers la page d'index
-    header("Location: index.html");
-    exit;
-}
-?>
+
     
 </body>
 </html>

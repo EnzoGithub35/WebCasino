@@ -7,7 +7,23 @@ label.innerHTML = label.innerText
 })
 
 
-window.onclick = function(event) {
+
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+
+
+  function myFunction2() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+
+  window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
       var i;
@@ -19,3 +35,13 @@ window.onclick = function(event) {
       }
     }
   }
+
+
+  const title = document.querySelector('.title');
+  title.innerHTML = title.innerHTML.split('').map((letter, i) =>
+    `<span style="transition-delay:${i * 40}ms; filter:hue-rotate(${i * 30}deg);">${letter}</span>`
+  ).join('');
+
+
+
+  

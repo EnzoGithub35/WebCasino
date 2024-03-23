@@ -55,7 +55,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-  
+<header style="width: 100%;">
+        <div class="topnav" id="myTopnav">
+            <a href="index.php" >Accueil</a>
+            <a href="connexion.php">Connexion</a>
+            <a href="inscription.php" class="current-page">Inscription</a>
+                <a onclick="myFunction2()" class="dropbtn">Jeux</a>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="blackjack_test.php">Blackjack</a>
+                  <a href="shifumi.php">Shifumi</a>
+                  <a href="Pile_ou_face.php">Pile ou Face</a>
+                </div>
+              </a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+          </div>
+    
+    </header> 
         
 
 <main class="">

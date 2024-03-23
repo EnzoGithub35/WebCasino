@@ -12,30 +12,28 @@ if ($conn->connect_error) {
     die("Connexion échouée: " . $conn->connect_error);
 }
 
-
-
-// Récupérez les données envoyées par JavaScript
+// Récupérer les données envoyées par JavaScript
 $data = json_decode(file_get_contents('php://input'), true);
-$sql = "SELECT NomJeu FROM GameName WHERE Id = 1";
-$NomJeu = $conn->query($sql);
 
-// Insérez les données dans la table 'games_history'
+// Initialiser l'ID du joueur
+$idJoueur = null;
+
+// Vérifier si la session est active
+session_start();
+if(isset($_SESSION['id'])){
+    $idJoueur = $_SESSION['id'];
+} else {
+    // Si la session n'est pas active ou si l'ID n'est pas disponible, vous pouvez gérer cette situation en envoyant une erreur ou en utilisant une valeur par défaut
+    die("Erreur: Session non trouvée.");
+}
+
+// Insérer les données dans la table 'games_history'
 $stmt = $conn->prepare("INSERT INTO games_history (IdJoueur, GameName, Resultat, Points) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("isss", $idJoueur, $gameName, $resultat, $points);
 
+// Récupérer le nom du jeu (peut-être à partir d'une autre table ou une valeur par défaut)
+$gameName = 'Blackjack'; // Mettez le nom du jeu ici
 
-// Vous devez définir l'ID du joueur et le nom du jeu ici
-$idJoueur = $data['gameId']; // Remplacez 1 par l'ID du joueur réel
-// Vérifier si la requête a renvoyé des résultats
-if ($NomJeu->num_rows > 0) {
-    // Parcourir les résultats et extraire le nom du jeu
-    while($row = $NomJeu->fetch_assoc()) {
-        $gameName = $row['NomJeu'];
-    }
-} else {
-    // Si aucun résultat n'est trouvé, utiliser un nom par défaut
-    $gameName = 'Nom par défaut';
-}
 $resultat = $data['result'];
 $points = $data['points'];
 

@@ -102,13 +102,39 @@
   </div>
 </div>
 
-<a id="retour-btn" href="jeux.php?id=<?=$_GET['id']?>"> <button> retour </button>
+<a id="retour-btn" href="jeux.php"> <button> retour </button>
 
 
 
 
 <script>
   
+  function sendScoresToServer() {
+  let resultat = playerWon ? 'Gagné' : 'Perdu';
+  let points = playerWon ? (5) : (-5); // Ajoute ou soustrait 5 points en fonction du résultat
+
+  // Créez un objet contenant les données à envoyer
+  let data = { // Utilisation de l'ID de session stocké dans une variable JavaScript
+    result: resultat,
+    points: points
+  };
+
+  // Effectuez une requête AJAX pour envoyer les données au serveur
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', 'traitement_score.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        console.log('Scores envoyés avec succès !');
+      } else {
+        console.error('Une erreur s\'est produite lors de l\'envoi des scores.');
+      }
+    }
+  };
+  xhr.send(JSON.stringify(data));
+}
+
   let deck = [];
   let playerCards = [];
   let dealerCards = [];
@@ -274,34 +300,9 @@
   }
 }
 
-function sendScoresToServer() {
-    let resultat = playerWon ? 'Gagné' : 'Perdu';
-    let points = playerWon ? (5) : (-5); // Ajoute ou soustrait 5 points en fonction du résultat
-    let urlParams = new URLSearchParams(window.location.search);
-    let gameId = urlParams.get('id'); // Vous  devez définir la logique pour obtenir l'ID de la partie en cours
 
-    // Créez un objet contenant les données à envoyer
-    let data = {
-        gameId: gameId,
-        result: resultat,
-        points: points
-    };
 
-    // Effectuez une requête AJAX pour envoyer les données au serveur
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'traitement_score.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                console.log('Scores envoyés avec succès !');
-            } else {
-                console.error('Une erreur s\'est produite lors de l\'envoi des scores.');
-            }
-        }
-    };
-    xhr.send(JSON.stringify(data));
-}
+
 
 </script>
 

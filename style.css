@@ -1,3 +1,9 @@
+
+body {
+  width: 100%;
+  margin: 0;
+}
+
 .topnav {
   overflow: hidden;
   background-color: #333;
@@ -14,9 +20,9 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 18px;
   animation-duration: 1.5s;
-  animation-name: fade;
+  margin-bottom: 40px;
 }
 
 .topnav a:hover {
@@ -31,6 +37,12 @@
 
 .topnav .icon {
   display: none;
+}
+
+.user-info {
+  color: white;
+  margin-right: 20px; /* Marge à droite pour l'espacement */
+  font-size: 16px;
 }
 
 @media screen and (max-width: 600px) {
@@ -83,8 +95,6 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  animation-duration: 1.5s;
-  animation-name: fade;
 
 }
 
@@ -95,6 +105,13 @@
   text-decoration: none;
   display: flex;
 }
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #F4bc5b;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
 /* PEN STYLES ========== */
@@ -273,10 +290,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: auto;
     position: relative;
-    margin: 0;
-    margin-top: 20px;
+    width: 100%;
+
 }
 .container {
     background-color: rgba(0, 0, 0, 0.4);
