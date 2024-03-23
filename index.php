@@ -22,19 +22,36 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <header style="width: 100%;">
     <div class="topnav" id="myTopnav">
-        <a href="index.php" class="current-page">Accueil</a>
-        <a href="connexion.php">Connexion</a>
-        <a href="inscription.php">Inscription</a>
-        <a onclick="myFunction2()" href="jeux.php" class="dropbtn">Jeux</a>
-        <div id="myDropdown" class="dropdown-content">
-            <a href="blackjack_test.php">Blackjack</a>
-            <a href="shifumi.php">Shifumi</a>
-            <a href="Pile_ou_face.php">Pile ou Face</a>
-        </div>
-        <span id="user-info" class=""></span>
+    <a href="index.php" class="current-page">Accueil</a>
         <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
-            <!-- Bouton de déconnexion -->
             <a href="deconnexion.php">Déconnexion</a>
+            <!-- L'utilisateur est connecté, n'affichez pas les boutons Connexion et Inscription -->
+            <a onclick="myFunction2()" class="dropbtn">Jeux</a>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="jeux.php">Page des jeux</a>
+                <a href="blackjack_test.php">Blackjack</a>
+                <a href="shifumi.php">Shifumi</a>
+                <a href="Pile_ou_face.php">Pile ou Face</a>
+            </div>
+            
+            <span id="user-info" class="user-info">
+                <?php
+                // Requête pour récupérer le pseudo de l'utilisateur connecté depuis la base de données
+                $sql = "SELECT pseudo FROM utilisateur WHERE IdUtilisateur = :id";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(":id", $_SESSION["id"], PDO::PARAM_INT);
+                $stmt->execute();
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                // Afficher le pseudo de l'utilisateur connecté depuis la base de données
+
+                ?>
+            </span>
+            
+        <?php else : ?>
+            <!-- L'utilisateur n'est pas connecté, afficher les boutons Connexion et Inscription -->
+            <a href="connexion.php">Connexion</a>
+            <a href="inscription.php">Inscription</a>
         <?php endif; ?>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
