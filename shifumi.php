@@ -1,4 +1,16 @@
-<?php
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="./style.css">
+  <title>Shifumi</title>
+</head>
+<body>
+  <h1>Shifumi</h1>
+
+  <?php
 // Connexion à la base de données
 include_once "config.php";
 
@@ -60,16 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <link rel="stylesheet" href="./style.css">
-  <title>Shifumi</title>
-</head>
-<body>
-  <h1>Shifumi</h1>
 
   <form method="post" action="">
     <label for="choix">Choisissez votre coup :</label>

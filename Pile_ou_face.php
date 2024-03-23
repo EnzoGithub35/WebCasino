@@ -105,12 +105,14 @@
     $choixOrdinateurTexte   = "";
     // Vérification du formulaire soumis
     if(isset($_POST['choix'])){
+        // Démarrer la session
+        session_start();
+        
         // Connexion à la base de données
         include 'config.php';
         
-
-        // Récupérer l'ID de l'utilisateur (supposons que vous l'ayez déjà)
-        $userId = $_GET['id']; // Mettez ici l'ID de l'utilisateur
+        // Récupérer l'ID de l'utilisateur à partir de la session
+        $userId = $_SESSION['id'];
 
         // Générer un choix aléatoire pour l'utilisateur (0 pour Pile, 1 pour Face)
         $choixUtilisateur = $_POST['choix'];
@@ -129,7 +131,6 @@
         if ($choixUtilisateur == $choixOrdinateur) {
             $resultat = "Gagné";
             $points = 5;
-            
         } else {
             $resultat = "Perdu";
             $points = -5; // Perdre 5 points
@@ -171,7 +172,7 @@
 </form>
 
 <div>
-    <a style="position: relative;" href="jeux.php?id=<?=$_GET['id']?>" > <button> Quitter </button>
+    <a style="position: relative;" href="jeux.php" > <button> Quitter </button>
     </div>
     
 </body>
