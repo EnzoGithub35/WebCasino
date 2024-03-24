@@ -231,6 +231,10 @@
     }
   }
 
+  function getCardImage(card) {
+    return `images/${card.value}_${card.suit}.png`;
+  }
+
   function showStatus() {
     if (!gameStarted) {
       return;
@@ -240,27 +244,26 @@
 
     let dealerCardString = '';
     for (let card of dealerCards) {
-      dealerCardString += card.value + ' ' + card.suit + ' | ';
+      dealerCardString += `<img src="${getCardImage(card)}" class="card-img">`;
     }
 
     let playerCardString = '';
     for (let card of playerCards) {
-      playerCardString += card.value + ' ' + card.suit + ' | ';
+      playerCardString += `<img src="${getCardImage(card)}" class="card-img">`;
     }
 
-    document.getElementById('result').innerHTML =
-      'Carte du croupier : ' + dealerCardString + '<br>' +
-      'Carte du joueur : ' + playerCardString + '<br><br>';
+    document.getElementById('dealer-cards').innerHTML = '<h2>Cartes du croupier :</h2>' + dealerCardString;
+    document.getElementById('player-cards').innerHTML = '<h2>Vos cartes :</h2>' + playerCardString;
 
     if (gameOver) {
       if (playerWon) {
         document.getElementById('result').innerHTML += '<div> vous avez gagné! </div>';
-        sendScoresToServer();
+        // Envoyer les scores au serveur si nécessaire
       } else {
-        document.getElementById('result').innerHTML += '<div class="white"> Le croupier a gagné </div>';
-        sendScoresToServer();
+        document.getElementById('result').innerHTML += '<div> Le croupier a gagné </div>';
+        // Envoyer les scores au serveur si nécessaire
       }
-      document.getElementById('result').innerHTML += '<br>appuyez sur "lancer la partie" pour recommencer.';
+      document.getElementById('result').innerHTML += '<br>Appuyez sur "Lancer la partie" pour recommencer.';
     }
   }
 
@@ -301,13 +304,35 @@
 }
 
 
+  function sendScoresToServer() {
+    let resultat = playerWon ? 'Gagné' : 'Perdu';
+    let points = playerWon ? (5) : (-5); // Ajoute ou soustrait 5 points en fonction du résultat
+    let urlParams = new URLSearchParams(window.location.search);
+    let gameId = urlParams.get('id'); // Vous  devez définir la logique pour obtenir l'ID de la partie en cours
 
+    // Créez un objet contenant les données à envoyer
+    let data = {
+        gameId: gameId,
+        result: resultat,
+        points: points
+    };
 
-
+    // Effectuez une requête AJAX pour envoyer les données au serveur
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'traitement_score.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                console.log('Scores envoyés avec succès !');
+            } else {
+                console.error('Une erreur s\'est produite lors de l\'envoi des scores.');
+            }
+        }
+    };
+    xhr.send(JSON.stringify(data));
+}
 </script>
-
-
-
 
 </body>
 </html>

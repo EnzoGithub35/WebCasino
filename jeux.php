@@ -8,10 +8,9 @@
 </head>
 
 <header style="width: 100%;">
+
     <div class="topnav" id="myTopnav">
         <a href="index.php" >Accueil</a>
-        <a href="connexion.php">Connexion</a>
-        <a href="inscription.php">Inscription</a>
         <a onclick="myFunction2()" class="dropbtn current-page">Jeux</a>
         <div id="myDropdown" class="dropdown-content">
             <a href="blackjack_test.php">Blackjack</a>
@@ -55,20 +54,8 @@
 
 <body style="background-color: #333;">
 <main>
-    <script>
-        document.getElementById('addPointBtn').addEventListener('click', function() {
-            // Effectuer une requête AJAX pour incrémenter le score côté serveur
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'add_point.php', true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    // Mettre à jour l'affichage du score côté client
-                    document.getElementById('score').innerText = xhr.responseText;
-                }
-            };
-            xhr.send();
-        });
-    </script>
+    
+
 
 </main>
 
@@ -77,7 +64,7 @@
   <div class="grid-container">
     <div class="test_box box-01 col-xs-6 col-md-4">
       <div class="inner">
-        <a href="blackjack_test.php" class="test_click box-image-1">
+        <a href="blackjack.php" class="test_click box-image-1">
           
           <div class="flex_this ">
             <h3 class="title"> Blackjack</h3>
@@ -120,7 +107,7 @@
     </div>
     <div class="test_box box-05 col-xs-6 col-md-4">
       <div class="inner">
-        <a href="blackjack.php" class="test_click box-image-5">
+        <a href="blackjack_test.php" class="test_click box-image-5">
           <div class="flex_this">
             <h3 class="title"> test BJ</h3>
             <span class="test_link">Jouez</span>

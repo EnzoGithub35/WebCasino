@@ -293,7 +293,6 @@ body {
     overflow: auto;
     position: relative;
     width: 100%;
-
 }
 .container {
     background-color: rgba(0, 0, 0, 0.4);
@@ -365,5 +364,9 @@ body {
     color: #F4bc5b;
     transform: translateY(-30px);
 }
+
+
+
+
 
 
