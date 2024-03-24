@@ -82,16 +82,32 @@ button:hover {
 
 .action-buttons {
 position: absolute;
-bottom: 80px; /* Ajustez cette valeur selon vos besoins */
+bottom: 30px; /* Ajustez cette valeur selon vos besoins */
 left: 50%;
 transform: translateX(-50%);
 }
 
+#restart-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+
+
 #retour-btn {
 position: absolute;  
 bottom: 20px;
-left: 50%;
-transform: translateX(-50%);
+right: 20px;
+}
+
+.game-result {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 60px)); /* ajustez la valeur 40px selon vos besoins */
+  text-align: center;
+  size: 2rem;
 }
 
 .card-img {
@@ -171,16 +187,9 @@ transform: translateX(-50%);
 <div id="game-container">
 
   <button onclick="startGame()">Lancer la partie</button>
+  <div id="game-result"></div>
 
   <div id="result">
-    <div id="player-section">
-      <h2 style="text-align: right;">Vos cartes :</h2>
-      <div id="player-cards"></div> <!-- Div pour les cartes du joueur -->
-    </div>
-    <div id="dealer-section">
-      <h2 style="text-align: left;">Cartes du croupier :</h2>
-      <div id="dealer-cards"></div> <!-- Div pour les cartes du croupier -->
-    </div>
   </div>
 
   <div class="action-buttons">
@@ -188,6 +197,7 @@ transform: translateX(-50%);
     <button onclick="stand()">Stand</button>
   </div>
 </div>
+
 
 <a id="retour-btn" href="jeux.php"> <button> retour </button>
 
@@ -296,21 +306,20 @@ function showStatus() {
     }
 
     document.getElementById('result').innerHTML =
-        'Carte du croupier : ' + dealerCardString + '<br>' +
-        'Vos cartes : ' + playerCardString + '<br><br>';
+        '<div> Carte du croupier </div> : ' + dealerCardString + '<br>' +
+        '<div>Vos cartes </div> : ' + playerCardString + '<br>';
 
     if (gameOver) {
         if (playerWon) {
-            document.getElementById('result').innerHTML += '<div>Vous avez gagné !</div>';
+            document.getElementById('result').innerHTML += "<div>Victoire !</div>";
             sendScoresToServer();
         } else {
-            document.getElementById('result').innerHTML += '<div>Le croupier a gagné.</div>';
+            document.getElementById('result').innerHTML += "<div '>Défaite</div>";
             sendScoresToServer();
         }
-        document.getElementById('result').innerHTML += '<br>Appuyez sur "Lancer la partie" pour recommencer.';
+        document.getElementById('result').innerHTML += '';
     }
 }
-
   function startGame() {
     gameStarted = true;
     gameOver = false;
