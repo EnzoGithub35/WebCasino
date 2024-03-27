@@ -77,7 +77,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 
         if($row) {
             // Afficher le bouton avec les informations de l'utilisateur
-            echo '<a href="statistiques.php"> <button id="btn-message" class="button-message">
+            echo '<a href="profil.php"> <button id="btn-message" class="button-message">
             <div class="content-avatar">
                 <div class="status-user"></div>
                 <div class="avatar">
@@ -87,7 +87,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             
             <div class="notice-content">
             
-                <div  class="username">Statistiques</div> 
+                <div  class="username">Profil</div> 
                 <div class="lable-message">' . $row["pseudo"] . '<span class="number-message">' . $row["coins"] . '</span></div>
                 <div class="user-id"></div>
                 
@@ -101,7 +101,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     }
 } else {
     // Afficher le bouton de connexion si l'utilisateur n'est pas connecté
-    echo '<button id="btn-message" class="button-message">
+    echo '<a href="connexion.php"><button id="btn-message" class="button-message">
     <div class="content-avatar">
         <div class="status-user"></div>
         <div class="avatar">
@@ -113,7 +113,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         <div class="lable-message">Déconnecté<span class="number-message"></span></div>
         <div class="user-id">svp</div>
     </div>
-</button>';
+</button></a>';
 }
 ?>
 
