@@ -162,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               ($joueur == "ciseaux" && $ordinateur == "feuille")) {
         echo "<p>Vous avez gagné !</p>";
         $resultat = "Victoire";
-        $points = 5;
+        $points = +5;
     } else {
         echo "<p>L'ordinateur a gagné !</p>";
         $resultat = "Défaite";

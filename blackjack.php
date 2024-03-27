@@ -298,7 +298,7 @@ function showStatus() {
 
   function sendScoresToServer() {
     let resultat = playerWon ? 'Gagné' : 'Perdu';
-    let points = playerWon ? (5) : (-5); // Ajoute ou soustrait 5 points en fonction du résultat
+    let points = playerWon ? (+5) : (-5); // Ajoute ou soustrait 5 points en fonction du résultat
     let urlParams = new URLSearchParams(window.location.search);
     let gameId = urlParams.get('id'); // Vous  devez définir la logique pour obtenir l'ID de la partie en cours
 

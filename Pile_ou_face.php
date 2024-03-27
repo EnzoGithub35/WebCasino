@@ -140,7 +140,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     // Comparer les choix et déterminer le résultat
     if ($choixUtilisateur == $choixOrdinateur) {
         $resultat = "Gagné";
-        $points = 5;
+        $points = +5;
     } else {
         $resultat = "Perdu";
         $points = -5; // Perdre 5 points
