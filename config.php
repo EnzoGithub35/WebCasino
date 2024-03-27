@@ -2,7 +2,7 @@
 $serveur = "bdd.wouafwouaf.ovh";
 $utilisateur = "wouafwouaf_casino";
 $mdp = "!2jSKgjU05HvN6TA";
-$basededonnees = "casino";
+$basededonnees = "wouafwouaf_casino";
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$serveur;dbname=$basededonnees;charset=$charset";

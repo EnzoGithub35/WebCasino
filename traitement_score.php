@@ -3,7 +3,7 @@
     $serveur = "bdd.wouafwouaf.ovh";
     $utilisateur = "wouafwouaf_casino";
     $mdp = "!2jSKgjU05HvN6TA";
-    $basededonnees = "casino";
+    $basededonnees = "wouafwouaf_casino";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
