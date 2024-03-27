@@ -22,7 +22,7 @@ body {
   text-decoration: none;
   font-size: 18px;
   animation-duration: 1.5s;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .topnav a:hover {
@@ -112,6 +112,257 @@ body {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+.connectBtn {
+  width: 130px;
+  height: 17px;
+  border: none;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: white;
+  font-weight: 1;
+  background: linear-gradient( to right,#ffdb9e,#fbaf2b);
+  box-shadow: 0 20px 30px -7px rgba(97, 118, 238, 0.5);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 4%;
+}
+
+.connectBtn {
+  position: fixed;
+  top: 1%;
+  right: calc(12% + 5px); /* Ajoutez 5 pixels de décalage à la droite */
+  z-index: 9999; /* Pour s'assurer que le bouton soit au-dessus des autres éléments */
+}
+
+.connectBtn:hover {
+  box-shadow: none;
+  transform: translate(0px, 2.2px);
+}
+
+.connectBtn:active {
+  transform: scale(0.96) translate(0px, 3.2px);
+}
+
+.button-message,
+.connectBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Espacement horizontal entre les boutons */
+}
+
+#btn-message {
+  --text-color: rgb(255, 255, 255);
+  --bg-color-sup: #5e5e5e;
+  --bg-color: #2b2b2b;
+  --bg-hover-color: #161616;
+
+  --font-size: 16px;
+  --btn-transition: all 0.2s ease-out;
+}
+
+.button-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: 400 var(--font-size) Helvetica Neue, sans-serif;
+  box-shadow: 0 0 2.17382px rgba(0,0,0,.049),0 1.75px 6.01034px rgba(0,0,0,.07),0 3.63px 14.4706px rgba(0,0,0,.091),0 22px 48px rgba(0,0,0,.14);
+  background-color: var(--bg-color);
+  border-radius: 68px;
+  cursor: pointer;
+  padding: 6px 10px 6px 6px;
+  width: fit-content;
+  height: 40px;
+  border: 0;
+  overflow: hidden;
+  position: relative;
+  transition: var(--btn-transition);
+}
+
+.button-message {
+  position: fixed;
+  top: 1%;
+  right: 2%;
+  z-index: 9999; /* Pour s'assurer que le bouton soit au-dessus des autres éléments */
+}
+
+.button-message:hover {
+  height: 56px;
+  padding: 8px 20px 8px 8px;
+  background-color: var(--bg-hover-color);
+  transition: var(--btn-transition);
+}
+
+.button-message:active {
+  transform: scale(0.99);
+}
+
+.content-avatar {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  transition: var(--btn-transition);
+  position: relative;
+}
+
+.button-message:hover {
+  color: #F4bc5b;
+  text-shadow: 0  0 20px #F4bc5b,
+  0  0 40px #F4bc5b,
+  0  0 80px #F4bc5b;
+}
+
+.button-message:hover .content-avatar {
+  width: 30px;
+  height: 30px;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--bg-color-sup);
+}
+
+.user-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.status-user {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  right: 1px;
+  bottom: 1px;
+  border-radius: 50%;
+  border-color: #F4bc5b;
+  outline: solid 2px var(--bg-color);
+  background-color: var(--online-status);
+  transition: var(--btn-transition);
+  animation: active-status 2s ease-in-out infinite;
+}
+
+
+
+.button-message:hover .status-user {
+  width: 10px;
+  height: 10px;
+  right: 1px;
+  bottom: 1px;
+  outline: solid 3px var(--bg-hover-color);
+}
+
+.notice-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 8px;
+  text-align: initial;
+  color: var(--text-color);
+}
+
+.username {
+  letter-spacing: -6px;
+  height: 0;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: var(--btn-transition);
+}
+
+.user-id {
+  font-size: 12px;
+  letter-spacing: -6px;
+  height: 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--btn-transition);
+}
+
+.lable-message {
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  transform: scaleY(1);
+  transition: var(--btn-transition);
+}
+
+.button-message:hover .username {
+  height: auto;
+  letter-spacing: normal;
+  opacity: 1;
+  transform: translateY(0);
+  transition: var(--btn-transition);
+}
+
+.button-message:hover .user-id {
+  height: auto;
+  letter-spacing: normal;
+  opacity: 1;
+  transform: translateY(0);
+  transition: var(--btn-transition);
+}
+
+.button-message:hover .lable-message {
+  height: 0;
+  transform: scaleY(0);
+  transition: var(--btn-transition);
+}
+
+.lable-message, .username {
+  font-weight: 600;
+}
+
+.number-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 8px;
+  font-size: 12px;
+  width: 23px;
+  height: 16px;
+  background-color: var(--bg-color-sup);
+  border-radius: 20px;
+}
+
+
+
+/*==============================================*/
+@keyframes active-status {
+  0% {
+    background-color: var(--online-status);
+  }
+
+  33.33% {
+    background-color: #F4bc5b;
+  }
+
+  66.33% {
+    background-color: #F4bc5b;
+  }
+
+  100% {
+    background-color: var(--online-status);
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .button-message,
+  .connectBtn {
+    flex-direction: column; /* Afficher les boutons en colonne sur les petits écrans */
+    text-align: center; /* Centrer le texte */ /* Espacement vertical entre les boutons */
+  }
+}
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
 /* PEN STYLES ========== */
@@ -366,7 +617,221 @@ body {
 }
 
 
+body {
+  background-color: #333;
+  color: #fff;
+  font-family: "Muli", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  position: relative;
+  width: 100%;
+}
+
+#game-container {
+width: 97vw;
+height: 80vh;
+text-align: center;
+background-color: #121212;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px #F4bc5b;
+position: relative; /* Permet de positionner les boutons enfants correctement */
+}
+
+h1 {
+font-size: 36px;
+margin-bottom: 20px;
+}
+
+button {
+background-color: #F4bc5b;
+color: #fff;
+border: none;
+border-radius: 5px;
+padding: 10px 20px;
+font-size: 18px;
+margin: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+button:hover {
+background-color: #Fabc5b;
+}
+
+#result {
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 60%;
+
+}
+
+#player-section {
+text-align: right; /* Pour afficher les cartes du joueur à droite */
+}
+
+#dealer-section {
+text-align: left; /* Pour afficher les cartes du croupier à gauche */
+}
+
+#player-cards img,
+#dealer-cards img {
+width: 100px;
+margin: 0 10px;
+}
+
+.white {
+color: #fff;
+}
+
+.action-buttons {
+position: absolute;
+bottom: 30px; /* Ajustez cette valeur selon vos besoins */
+left: 50%;
+transform: translateX(-50%);
+}
+
+#restart-text {
+position: absolute;
+bottom: 20px;
+left: 20px;
+}
+
+
+
+#retour-btn {
+position: absolute;  
+bottom: 20px;
+right: 20px;
+}
+
+.game-result {
+position: relative;
+top: 50%;
+left: 50%;
+transform: translate(-50%, calc(-50% + 60px)); /* ajustez la valeur 40px selon vos besoins */
+text-align: center;
+size: 2rem;
+}
+
+.card-img {
+width: 15%; /* Taille des cartes en pourcentage de la largeur de l'écran */
+max-width: 100px; /* Taille maximale des cartes */
+height: auto; /* Hauteur automatique pour conserver les proportions */
+}
+
+@media screen and (max-width: 600px) {
+#dealer-cards {
+  flex-direction: row; /* Affichage des cartes du croupier en ligne */
+  align-items: center; /* Alignement des cartes du croupier au centre */
+  margin-bottom: 20px; /* Espacement entre les cartes du croupier et du joueur */
+}
+
+#player-cards {
+  flex-direction: row; /* Affichage des cartes du joueur en ligne */
+  align-items: center; /* Alignement des cartes du joueur au centre */
+  margin-top: 20px; /* Espacement entre les cartes du croupier et du joueur */
+}
+
+#player-cards img,
+#dealer-cards img {
+width: 20px;
+height: 30px;
+margin: 0 10px;
+}
+}
 
 
 
 
+.bodyPoF {
+  font-family: Arial, sans-serif;
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.h1PoF {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.formPoF {
+  height: 75vh;
+  width: 97vw;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow:0 0 40px #F4bc5b;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+
+.labelPoF {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.inputPoF[type="radio"] {
+  display: none;
+}
+
+.inputPoF[type="radio"] + label {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.inputPoF[type="radio"]:checked + label {
+  background-color: #F4bc5b;
+  color: black;
+  border-color: #F4bc5b;
+}
+
+.inputPoF[type="radio"] + label:hover {
+  background-color: #F4bc5b;
+}
+
+.inputPoF[type="radio"]:checked + label:hover {
+  background-color: #eabc5b;
+  color: #fff;
+}
+
+.buttonPoF[type="submit"] {
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: orange;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: auto;
+}
+
+.buttonPoF[type="submit"]:hover {
+  background-color: #f6bc5b;      
+}
+
+.resultPoF {
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+}

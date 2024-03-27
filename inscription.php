@@ -18,7 +18,12 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération des valeurs postées
     $email = $_POST["email"];
-    $mdp = $_POST["mdp"];
+    $mdp = $_POST["mdp"]; // Mot de passe en texte clair
+
+    // Hasher le mot de passe
+    $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);
+
+    // Autres valeurs postées
     $pseudo = $_POST["pseudo"];
     $Nom = $_POST["Nom"];
     $Prenom = $_POST["Prenom"];
@@ -35,10 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($compte == 0) {
             // Aucun utilisateur avec cet email ou ce pseudo n'a été trouvé, procédez à l'inscription
-            // Hasher le mot de passe
-
-
-            $requete = "INSERT INTO utilisateur (pseudo, Nom, Prenom, email, DateCreationCompte, mdp, AdresseIP) VALUES ('$pseudo', '$Nom', '$Prenom', '$email', NOW(), '$mdp',  '$AdresseIP')";
+            $requete = "INSERT INTO utilisateur (pseudo, Nom, Prenom, email, DateCreationCompte, mdp, AdresseIP, coins) VALUES ('$pseudo', '$Nom', '$Prenom', '$email', NOW(), '$mdpHash',  '$AdresseIP' 100)";
             
             if ($conn->query($requete) === TRUE) {
                 header("Location: connexion.php");

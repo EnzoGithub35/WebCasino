@@ -156,8 +156,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`pseudo`, `Nom`, `Prenom`, `email`, `mdp`, `DateCreationCompte`, `AdresseIP`, `coins`) VALUES
-('Lyxow', 'Reine', 'Enzo', 'enzo.reine@ecoles-epsi.net', 'azerty', NOW(), '', 0),
-('Blytepro', 'Capodano', 'Yann', 'yznn.capo@ecoles-epsi.net', 'azerty', NOW(), '', 0);
+('Lyxow', 'Reine', 'Enzo', 'enzo.reine@ecoles-epsi.net', 'azerty', NOW(), '', 100),
+('Blytepro', 'Capodano', 'Yann', 'yann.capo@ecoles-epsi.net', 'azerty', NOW(), '', 100);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

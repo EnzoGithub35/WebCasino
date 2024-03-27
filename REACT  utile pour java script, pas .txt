@@ -33,3 +33,7 @@ Dribble : maquette de site
 page pour changer 
 
 utiliser socket js
+
+faire un système de hachage de mot de passe
+
+
