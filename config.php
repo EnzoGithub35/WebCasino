@@ -1,7 +1,7 @@
 <?php
-$serveur = "localhost";
-$utilisateur = "root";
-$mdp = "";
+$serveur = "bdd.wouafwouaf.ovh";
+$utilisateur = "wouafwouaf_casino";
+$mdp = "!2jSKgjU05HvN6TA";
 $basededonnees = "casino";
 $charset = 'utf8mb4';
 

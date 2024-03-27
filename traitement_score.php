@@ -1,9 +1,9 @@
     <?php
     // Connexion à la base de données
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "casino";
+    $serveur = "bdd.wouafwouaf.ovh";
+    $utilisateur = "wouafwouaf_casino";
+    $mdp = "!2jSKgjU05HvN6TA";
+    $basededonnees = "casino";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
