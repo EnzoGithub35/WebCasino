@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `blackjack` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Id` (`Id`),
   UNIQUE KEY `Id_UNIQUE` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `games_history` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Id` (`Id`),
   UNIQUE KEY `Id_UNIQUE` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `points` (
   `id` int NOT NULL AUTO_INCREMENT,
   `score` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `points`
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `shifumi` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Id` (`Id`),
   UNIQUE KEY `Id_UNIQUE` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `statistic` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Id` (`Id`),
   UNIQUE KEY `Id_UNIQUE` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 DROP TABLE IF EXISTS `GameName`;
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `GameName` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Id` (`Id`),
   UNIQUE KEY `Id_UNIQUE` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `GameName` (`NomJeu`) VALUES
 ('BlackJack'),
@@ -149,8 +149,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   UNIQUE KEY `pseudo_UNIQUE` (`pseudo`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `IdUtilisateur_UNIQUE` (`IdUtilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
-
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ALTER TABLE utilisateur MODIFY COLUMN mdp VARCHAR(255);
 --
 -- Déchargement des données de la table `utilisateur`
 --

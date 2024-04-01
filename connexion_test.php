@@ -1,4 +1,17 @@
+
+
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="./style.css">
+    <title>Connexion</title>
+</head>
+<body>
 <?php
+// Inclure le fichier de configuration de la base de données
 include_once "config.php";
 
 // Initialiser la session si ce n'est pas déjà fait
@@ -53,18 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="fr" data-bs-theme="auto">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <link rel="stylesheet" href="./style.css">
-    <title>Connexion</title>
-</head>
-<body>
-
 <header style="width: 100%;">
     <div class="topnav" id="myTopnav">
         <a href="index.php" class="current-page">Accueil</a>
@@ -119,11 +120,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </main>
 </body>
 
-<?php
-// Affichage des erreurs s'il y en a
-if (isset($error_message)) {
-    echo '<p style="color: red;">' . $error_message . '</p>';
-}
-?>
+
 
 </html>

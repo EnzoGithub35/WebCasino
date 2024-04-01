@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($compte == 0) {
             // Aucun utilisateur avec cet email ou ce pseudo n'a été trouvé, procédez à l'inscription
-            $requete = "INSERT INTO utilisateur (pseudo, Nom, Prenom, email, DateCreationCompte, mdp, AdresseIP, coins) VALUES ('$pseudo', '$Nom', '$Prenom', '$email', NOW(), '$mdpHash',  '$AdresseIP' 100)";
+            $requete = "INSERT INTO utilisateur (pseudo, Nom, Prenom, email, DateCreationCompte, mdp, AdresseIP, coins) VALUES ('$pseudo', '$Nom', '$Prenom', '$email', NOW(), '$mdpHash',  '$AdresseIP', 100)";
             
             if ($conn->query($requete) === TRUE) {
                 header("Location: connexion.php");

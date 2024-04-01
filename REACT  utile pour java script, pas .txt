@@ -36,4 +36,8 @@ utiliser socket js
 
 faire un système de hachage de mot de passe
 
+*zy85SlJruWDX6Obyn
 
+améliorer la vitesse du chargement du site : GTmetrix
+
+unused css : retiré le css inutile
