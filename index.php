@@ -16,7 +16,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-
+<body class="bgAccueil"> 
 <header style="width: 100%;">
     <div class="topnav" id="myTopnav">
     <a href="index.php" class="current-page">Accueil</a>
@@ -125,6 +125,15 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             </button></a>
             
             <?php endif; ?>
+
+<div class="bgAccueil">
+
+</div>
+
+</body>
+
+
+
 
 </body>
 </html>

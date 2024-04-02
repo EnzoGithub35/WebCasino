@@ -4,9 +4,20 @@ body {
   margin: 0;
 }
 
+.bgAccueil {
+    background-image: url("images/BG1.webp");
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;
+    height: 100vh;
+}
+
 .topnav {
   overflow: hidden;
   background-color: #333;
+  box-shadow: 0 20px 30px -7px rgba(0, 0, 0, 0.5);
 }
 
 .current-page {
@@ -22,7 +33,6 @@ body {
   text-decoration: none;
   font-size: 18px;
   animation-duration: 1.5s;
-  margin-bottom: 30px;
 }
 
 .topnav a:hover {
@@ -134,7 +144,7 @@ body {
 
 .connectBtn {
   position: fixed;
-  top: 1%;
+  top: 0%;
   right: calc(12% + 5px); /* Ajoutez 5 pixels de décalage à la droite */
   z-index: 9999; /* Pour s'assurer que le bouton soit au-dessus des autres éléments */
 }
@@ -186,7 +196,7 @@ body {
 
 .button-message {
   position: fixed;
-  top: 1%;
+  top: 0%;
   right: 2%;
   z-index: 9999; /* Pour s'assurer que le bouton soit au-dessus des autres éléments */
 }

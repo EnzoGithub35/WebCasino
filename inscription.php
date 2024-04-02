@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mdp = $_POST["mdp"]; // Mot de passe en texte clair
 
     // Hasher le mot de passe
-    $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);
+    
 
     // Autres valeurs postées
     $pseudo = $_POST["pseudo"];
