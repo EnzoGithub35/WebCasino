@@ -1,8 +1,6 @@
 <?php
-// Inclure votre fichier de configuration de la base de données
 include_once "config.php";
 
-// Initialiser la session si ce n'est pas déjà fait
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -24,7 +22,6 @@ if (session_status() == PHP_SESSION_NONE) {
     <div class="topnav" id="myTopnav">
     <a href="index.php" class="current-page">Accueil</a>
         <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
-            <!-- L'utilisateur est connecté, n'affichez pas les boutons Connexion et Inscription -->
             <a onclick="myFunction2()" class="dropbtn">Jeux</a>
             <div id="myDropdown" class="dropdown-content">
                 <a href="jeux.php">Page des jeux</a>
@@ -36,14 +33,12 @@ if (session_status() == PHP_SESSION_NONE) {
             
             <span id="user-info" class="user-info">
                 <?php
-                // Requête pour récupérer le pseudo de l'utilisateur connecté depuis la base de données
                 $sql = "SELECT pseudo FROM utilisateur WHERE IdUtilisateur = :id";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(":id", $_SESSION["id"], PDO::PARAM_INT);
                 $stmt->execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                // Afficher le pseudo de l'utilisateur connecté depuis la base de données
 
                 ?>
             </span>
@@ -51,7 +46,6 @@ if (session_status() == PHP_SESSION_NONE) {
  
             
         <?php else : ?>
-            <!-- L'utilisateur n'est pas connecté, afficher les boutons Connexion et Inscription -->
             <a href="connexion.php">Connexion</a>
             <a href="inscription.php">Inscription</a>
         <?php endif; ?>
@@ -66,9 +60,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 <?php
-// Vérifier si l'utilisateur est connecté
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    // Requête pour récupérer le pseudo de l'utilisateur connecté depuis la base de données
     $sql = "SELECT pseudo, email FROM utilisateur WHERE IdUtilisateur = :id";
 
     try {
@@ -78,7 +70,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if($row) {
-            // Afficher le bouton avec les informations de l'utilisateur
             echo '<button id="btn-message" class="button-message">
             <div class="content-avatar">
                 <div class="status-user"></div>
@@ -97,7 +88,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         echo "Erreur : " . $e->getMessage();
     }
 } else {
-    // Afficher le bouton de connexion si l'utilisateur n'est pas connecté
     echo '<button id="btn-message" class="button-message">
     <div class="content-avatar">
         <div class="status-user"></div>
@@ -298,18 +288,18 @@ function showStatus() {
 
   function sendScoresToServer() {
     let resultat = playerWon ? 'Gagné' : 'Perdu';
-    let points = playerWon ? (+5) : (-5); // Ajoute ou soustrait 5 points en fonction du résultat
+    let points = playerWon ? (+5) : (-5); 
     let urlParams = new URLSearchParams(window.location.search);
-    let gameId = urlParams.get('id'); // Vous  devez définir la logique pour obtenir l'ID de la partie en cours
+    let gameId = urlParams.get('id'); 
 
-    // Créez un objet contenant les données à envoyer
+
     let data = {
         gameId: gameId,
         result: resultat,
         points: points
     };
 
-    // Effectuez une requête AJAX pour envoyer les données au serveur
+   
     let xhr = new XMLHttpRequest();
     xhr.open('POST', 'traitement_score.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');

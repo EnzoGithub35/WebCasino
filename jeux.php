@@ -1,12 +1,8 @@
 <?php
-// Inclure votre fichier de configuration de la base de données
 include_once "config.php";
-
-// Initialiser la session si ce n'est pas déjà fait
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,12 +12,10 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-
 <header style="width: 100%;">
     <div class="topnav" id="myTopnav">
     <a href="index.php" class="current-page">Accueil</a>
         <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
-            <!-- L'utilisateur est connecté, n'affichez pas les boutons Connexion et Inscription -->
             <a onclick="myFunction2()" class="dropbtn">Jeux</a>
             <div id="myDropdown" class="dropdown-content">
                 <a href="jeux.php">Page des jeux</a>
@@ -29,26 +23,16 @@ if (session_status() == PHP_SESSION_NONE) {
                 <a href="shifumi.php">Shifumi</a>
                 <a href="Pile_ou_face.php">Pile ou Face</a>
             </div>
-
-            
             <span id="user-info" class="user-info">
                 <?php
-                // Requête pour récupérer le pseudo de l'utilisateur connecté depuis la base de données
                 $sql = "SELECT pseudo FROM utilisateur WHERE IdUtilisateur = :id";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(":id", $_SESSION["id"], PDO::PARAM_INT);
                 $stmt->execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                // Afficher le pseudo de l'utilisateur connecté depuis la base de données
-
                 ?>
             </span>
-
- 
-            
         <?php else : ?>
-            <!-- L'utilisateur n'est pas connecté, afficher les boutons Connexion et Inscription -->
             <a href="connexion.php">Connexion</a>
             <a href="connexion_test.php">Connexion TEST</a>
             <a href="inscription.php">Inscription</a>
@@ -59,24 +43,15 @@ if (session_status() == PHP_SESSION_NONE) {
     </div>
 </header>
 <script src="script.js"></script>
-
-
-
-
 <?php
-// Vérifier si l'utilisateur est connecté
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    // Requête pour récupérer le pseudo de l'utilisateur connecté depuis la base de données
     $sql = "SELECT pseudo, email, coins FROM utilisateur WHERE IdUtilisateur = :id";
-
     try {
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":id", $_SESSION["id"], PDO::PARAM_INT);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
         if($row) {
-            // Afficher le bouton avec les informations de l'utilisateur
             echo '<button id="btn-message" class="button-message">
             <div class="content-avatar">
                 <div class="status-user"></div>
@@ -95,7 +70,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         echo "Erreur : " . $e->getMessage();
     }
 } else {
-    // Afficher le bouton de connexion si l'utilisateur n'est pas connecté
     echo '<button id="btn-message" class="button-message">
     <div class="content-avatar">
         <div class="status-user"></div>
@@ -111,7 +85,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 </button>';
 }
 ?>
-
 <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
 <a href="deconnexion.php">
                 <button class="connectBtn">
@@ -120,25 +93,18 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             </button></a>
             
             <?php endif; ?>
-
 <body style="background-color: #333;">
 <main>
-    
-
-
 </main>
-
     <div class="row">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
   <div class="grid-container">
     <div class="test_box box-01 col-xs-6 col-md-4">
       <div class="inner">
         <a href="blackjack.php" class="test_click box-image-1">
-          
           <div class="flex_this ">
             <h3 class="title"> Blackjack</h3>
             <span class="test_link">Jouez</span>
-            
           </div>
         </a>
       </div>
@@ -146,7 +112,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     <div class="test_box box-02 col-xs-6 col-md-4">
       <div class="inner">
         <a href="shifumi.php" class="test_click box-image-2">
-          
           <div class="flex_this">
             <h3 class="title"> shifumi</h3>
             <span class="test_link">Jouez</span>
@@ -196,10 +161,5 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     </div>
   </div>
 </div>
-
-    
-
-
-    
 </body>
 </html>

@@ -1,8 +1,6 @@
 <?php
-// Inclure votre fichier de configuration de la base de données
 include_once "config.php";
 
-// Initialiser la session si ce n'est pas déjà fait
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -23,9 +21,8 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <header style="width: 100%;">
     <div class="topnav" id="myTopnav">
-    <a href="index.php" class="current-page">Accueil</a>
+    <a href="index.php" >Accueil</a>
         <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
-            <!-- L'utilisateur est connecté, n'affichez pas les boutons Connexion et Inscription -->
             <a onclick="myFunction2()" class="dropbtn">Jeux</a>
             <div id="myDropdown" class="dropdown-content">
                 <a href="jeux.php">Page des jeux</a>
@@ -37,14 +34,12 @@ if (session_status() == PHP_SESSION_NONE) {
             
             <span id="user-info" class="user-info">
                 <?php
-                // Requête pour récupérer le pseudo de l'utilisateur connecté depuis la base de données
-                $sql = "SELECT pseudo FROM utilisateur WHERE IdUtilisateur = :id";
+                $sql = "SELECT pseudo, email FROM utilisateur WHERE IdUtilisateur = :id";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(":id", $_SESSION["id"], PDO::PARAM_INT);
                 $stmt->execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                // Afficher le pseudo de l'utilisateur connecté depuis la base de données
 
                 ?>
             </span>
@@ -52,8 +47,7 @@ if (session_status() == PHP_SESSION_NONE) {
  
             
         <?php else : ?>
-            <!-- L'utilisateur n'est pas connecté, afficher les boutons Connexion et Inscription -->
-            <a href="connexion.php">Connexion</a>
+            <a class="current-page" href="connexion.php">Connexion</a>
             <a href="inscription.php">Inscription</a>
         <?php endif; ?>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -66,20 +60,21 @@ if (session_status() == PHP_SESSION_NONE) {
   
 
 
-  <div class="container">  
+  <div class="container" style="margin-top: 5vh;">  
     <h1 style="color: #F4bc5b">Connexion</h1>  
     <form method="post">  
      <div class="form-control">  
-      <input type="text" name="pseudo" required>  
-      <label for="pseudo">pseudo</label>  
-         </div>  
+    <input type="text" name="pseudo_email" required>
+    <label for="pseudo_email">Pseudo ou Email</label>
+    </div> 
+         
      <div class="form-control">  
       <input type="password" name="mdp" required>  
-      <label for="mdp">Password</label>  
+      <label for="mdp">Mot de passe</label>  
      </div>  
      <button class="btn">Connexion</button>  
      <p class="text">Pas de compte ? <a href="inscription.php">Inscrivez vous</a> </p> 
-
+     </div>  
   <script src="script.js"></script>
 </main>
 
@@ -89,47 +84,37 @@ if (session_status() == PHP_SESSION_NONE) {
 <?php
 
 
-// Vérification des données postées
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $pseudo = $_POST["pseudo"];
+    $pseudo_email = $_POST["pseudo_email"];
     $mdp = $_POST["mdp"];
 
-    // Requête pour vérifier les informations d'identification de l'utilisateur
-    $requete = "SELECT IdUtilisateur FROM utilisateur WHERE pseudo = ? AND mdp = ?";
+    $requete = "SELECT IdUtilisateur FROM utilisateur WHERE (pseudo = ? OR email = ?) AND mdp = ?";
     if($stmt = $pdo->prepare($requete)) {
-        // Liaison des paramètres
-        $stmt->bindParam(1, $pseudo, PDO::PARAM_STR);
-        $stmt->bindParam(2, $mdp, PDO::PARAM_STR);
+        $stmt->bindParam(1, $pseudo_email, PDO::PARAM_STR);
+        $stmt->bindParam(2, $pseudo_email, PDO::PARAM_STR);
+        $stmt->bindParam(3, $mdp, PDO::PARAM_STR);
 
-        // Exécution de la requête
         if($stmt->execute()) {
-            // Vérification du résultat
             if($stmt->rowCount() == 1) {
-                // Récupérer l'ID de l'utilisateur
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 $id = $row["IdUtilisateur"];
 
-                // Stocker l'ID de l'utilisateur dans la session
                 $_SESSION["loggedin"] = true;
                 $_SESSION["id"] = $id;
 
-                // Rediriger vers la page d'accueil avec l'ID de l'utilisateur
                 header("Location: index.php");
                 exit();
             } else {
-                // Identifiants incorrects
                 $error_message = "Identifiants incorrects. Veuillez réessayer.";
             }
         } else {
-            // Erreur lors de l'exécution de la requête
+
             $error_message = "Erreur lors de la tentative de connexion. Veuillez réessayer.";
         }
     } else {
-        // Erreur lors de la préparation de la requête
         $error_message = "Erreur lors de la tentative de connexion. Veuillez réessayer.";
     }
 }
-
 ?>
       
 </html>

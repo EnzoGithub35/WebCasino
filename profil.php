@@ -1,23 +1,21 @@
 <?php
-// Inclure votre fichier de configuration de la base de données
+
 include_once "config.php";
 
-// Initialiser la session si ce n'est pas déjà fait
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Initialiser une variable pour stocker les informations de l'utilisateur
+
 $userInfo = array();
 
-// Initialiser des variables pour stocker l'historique des jeux
 $blackjackHistory = array();
 $shifumiHistory = array();
 $pileOuFaceHistory = array();
 
-// Vérifier si l'utilisateur est connecté
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    // Requête pour récupérer toutes les informations de l'utilisateur connecté depuis la base de données
+    
     $sql_user = "SELECT * FROM utilisateur WHERE IdUtilisateur = :id";
 
     try {
@@ -29,7 +27,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         echo "Erreur : " . $e->getMessage();
     }
 
-    // Requête pour récupérer le pseudo de l'utilisateur connecté depuis la base de données
+    
     $sql = "SELECT pseudo FROM utilisateur WHERE IdUtilisateur = :id";
 
     try {
@@ -41,7 +39,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         echo "Erreur : " . $e->getMessage();
     }
 
-    // Requête pour récupérer les 10 dernières parties de Blackjack de l'utilisateur connecté
+   
     $sql_blackjack = "SELECT * FROM games_history WHERE IdJoueur = :id AND GameName = 'BlackJack' ORDER BY Id DESC LIMIT 10";
 
     try {
@@ -53,7 +51,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         echo "Erreur : " . $e->getMessage();
     }
 
-    // Requête pour récupérer les 10 dernières parties de Shifumi de l'utilisateur connecté
     $sql_shifumi = "SELECT * FROM games_history WHERE IdJoueur = :id AND GameName = 'Shifumi' ORDER BY Id DESC LIMIT 10";
 
     try {
@@ -65,7 +62,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         echo "Erreur : " . $e->getMessage();
     }
 
-    // Requête pour récupérer les 10 dernières parties de Pile ou Face de l'utilisateur connecté
     $sql_pileOuFace = "SELECT * FROM games_history WHERE IdJoueur = :id AND GameName = 'Pile ou Face' ORDER BY Id DESC LIMIT 10";
 
     try {
@@ -77,7 +73,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         echo "Erreur : " . $e->getMessage();
     }
 } else {
-    // Rediriger l'utilisateur vers la page de connexion s'il n'est pas connecté
     header("Location: connexion.php");
     exit;
 }
@@ -96,7 +91,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     <div class="topnav" id="myTopnav">
     <a href="index.php" class="current-page">Accueil</a>
         <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
-            <!-- L'utilisateur est connecté, n'affichez pas les boutons Connexion et Inscription -->
             <a onclick="myFunction2()" class="dropbtn">Jeux</a>
             <div id="myDropdown" class="dropdown-content">
                 <a href="jeux.php">Page des jeux</a>
@@ -108,7 +102,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             
             <span id="user-info" class="user-info">
                 <?php
-                // Afficher le pseudo de l'utilisateur connecté depuis la base de données
                 if($row) {
                     echo $row["pseudo"];
                 }
@@ -118,7 +111,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
  
             
         <?php else : ?>
-            <!-- L'utilisateur n'est pas connecté, afficher les boutons Connexion et Inscription -->
             <a href="connexion.php">Connexion</a>
             <a href="connexion_test.php">Connexion TEST</a>
             <a href="inscription.php">Inscription</a>
@@ -130,9 +122,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 </header>
 <script src="script.js"></script>
 <?php
-// Vérifier si l'utilisateur est connecté
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    // Afficher le bouton avec les informations de l'utilisateur
     echo '<a href="profil.php"> <button id="btn-message" class="button-message">
             <div class="content-avatar">
                 <div class="status-user"></div>
@@ -152,7 +142,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 
             </button></a>';
     } else {
-        // Afficher le bouton de connexion si l'utilisateur n'est pas connecté
         echo '<a href="connexion.php"><button id="btn-message" class="button-message">
         <div class="content-avatar">
             <div class="status-user"></div>
@@ -186,7 +175,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         <p>Prénom: <?php echo $userInfo["Prenom"]; ?></p>
         <p>Email: <?php echo $userInfo["email"]; ?></p>
         <p>Nombre de coins: <?php echo $userInfo["coins"]; ?></p>
-        <!-- Vous pouvez ajouter d'autres informations ici si nécessaire -->
     </div>
     
     <div>
@@ -218,7 +206,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     </div>
     
 <?php
-// Requête pour compter le nombre de parties jouées dans chaque jeu
 $sql = "SELECT GameName, COUNT(*) AS gameCount
         FROM games_history
         WHERE IdJoueur = :idJoueur

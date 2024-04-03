@@ -1,8 +1,6 @@
 <?php
-// Inclure votre fichier de configuration de la base de données
 include_once "config.php";
 
-// Initialiser la session si ce n'est pas déjà fait
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -24,7 +22,6 @@ if (session_status() == PHP_SESSION_NONE) {
     <div class="topnav" id="myTopnav">
     <a href="index.php" class="current-page">Accueil</a>
         <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
-            <!-- L'utilisateur est connecté, n'affichez pas les boutons Connexion et Inscription -->
             <a onclick="myFunction2()" class="dropbtn">Jeux</a>
             <div id="myDropdown" class="dropdown-content">
                 <a href="jeux.php">Page des jeux</a>
@@ -36,14 +33,12 @@ if (session_status() == PHP_SESSION_NONE) {
             
             <span id="user-info" class="user-info">
                 <?php
-                // Requête pour récupérer le pseudo de l'utilisateur connecté depuis la base de données
                 $sql = "SELECT pseudo FROM utilisateur WHERE IdUtilisateur = :id";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(":id", $_SESSION["id"], PDO::PARAM_INT);
                 $stmt->execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                // Afficher le pseudo de l'utilisateur connecté depuis la base de données
 
                 ?>
             </span>
@@ -51,7 +46,6 @@ if (session_status() == PHP_SESSION_NONE) {
  
             
         <?php else : ?>
-            <!-- L'utilisateur n'est pas connecté, afficher les boutons Connexion et Inscription -->
             <a href="connexion.php">Connexion</a>
             <a href="inscription.php">Inscription</a>
         <?php endif; ?>
@@ -66,9 +60,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 <?php
-// Vérifier si l'utilisateur est connecté
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    // Requête pour récupérer le pseudo de l'utilisateur connecté depuis la base de données
     $sql = "SELECT pseudo, email FROM utilisateur WHERE IdUtilisateur = :id";
 
     try {
@@ -78,7 +70,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if($row) {
-            // Afficher le bouton avec les informations de l'utilisateur
             echo '<button id="btn-message" class="button-message">
             <div class="content-avatar">
                 <div class="status-user"></div>
@@ -97,7 +88,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         echo "Erreur : " . $e->getMessage();
     }
 } else {
-    // Afficher le bouton de connexion si l'utilisateur n'est pas connecté
+    
     echo '<button id="btn-message" class="button-message">
     <div class="content-avatar">
         <div class="status-user"></div>
@@ -125,34 +116,33 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 <?php
 include_once "config.php";
 
-// Démarrer la session si ce n'est pas déjà fait
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Vérifier si l'ID de session est disponible
+
 if (!isset($_SESSION['id'])) {
-    // Si l'ID de session n'est pas défini, redirigez l'utilisateur vers une page appropriée
+
     header("Location: erreur.php");
     exit;
 }
 
-// Vérifier si le formulaire a été soumis
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Options possibles pour le joueur et l'ordinateur
+
     $options = ["pierre", "feuille", "ciseaux"];
     
-    // Choisir une option aléatoire pour l'ordinateur
     $ordinateur = $options[array_rand($options)];
     
-    // Récupérer l'option choisie par le joueur
+
     $joueur = $_POST["choix"];
     
-    // Afficher les choix du joueur et de l'ordinateur
+
     echo "<p>Vous avez choisi : $joueur</p>";
     echo "<p>L'ordinateur a choisi : $ordinateur</p>";
     
-    // Déterminer le résultat du jeu
+
     if ($joueur == $ordinateur) {
         echo "<p>C'est une égalité !</p>";
         $resultat = "Égalité";
@@ -169,20 +159,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $points = -5;
     }
 
-    // Insérer les données dans la table 'games_history'
-    $idJoueur = $_SESSION['id']; // Récupérer l'ID de session
-    $gameName = 'Shifumi'; // Nom du jeu
+    $idJoueur = $_SESSION['id'];
+    $gameName = 'Shifumi'; 
     
-    // Exécuter la requête pour insérer les données dans la table games_history
+
     $stmt = $pdo->prepare("INSERT INTO games_history (IdJoueur, GameName, Resultat, Points) VALUES (?, ?, ?, ?)");
     $stmt->execute([$idJoueur, $gameName, $resultat, $points]);
 
-    // Mettre à jour le nombre de pièces de l'utilisateur dans la table utilisateur
+
     $sqlUpdate = "UPDATE utilisateur SET coins = coins + ? WHERE IdUtilisateur = ?";
     $stmtUpdate = $pdo->prepare($sqlUpdate);
     $stmtUpdate->execute([$points, $idJoueur]);
 
-    // Afficher les boutons pour rejouer ou retourner à la page précédente avec l'ID conservé
     echo "<div>
             <a href='jeux.php'><button>Retour</button></a>
             <a href='shifumi.php'><button>Rejouer</button></a>
@@ -203,15 +191,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <header style="width: 100%;">
-    <!-- Votre code pour l'en-tête ici -->
+
 </header>
 
 <?php
-// Votre code pour afficher les informations de l'utilisateur ici
+
 ?>
 
 <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
-<!-- Votre code pour le bouton de déconnexion ici -->
+
 <?php endif; ?>
 
 <form method="post" action="">

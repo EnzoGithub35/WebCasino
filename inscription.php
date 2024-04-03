@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
 
 <main class="">
-    <div class="container">
+    <div class="container" style="margin-top: 5vh;">
     <h1 style="color: #F4bc5b">Inscription</h1>  
     <form method="post" action="">
             <div class="form-control">    

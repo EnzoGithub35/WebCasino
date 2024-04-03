@@ -1,17 +1,41 @@
 
 body {
+  background-color: #333;
+  color: #fff;
+  font-family: "Muli", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  position: relative;
+  width: 100%;
   width: 100%;
   margin: 0;
 }
 
+.header-with-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  position: relative; 
+  z-index: 2;
+}
+
 .bgAccueil {
-    background-image: url("images/BG1.webp");
-    
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: auto;
-    height: 100vh;
+  
+  background-image: url("images/BG1.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  min-width: 1024px;
+	
+
+  width: 100%;
+  height: auto;
+
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .topnav {
@@ -20,9 +44,11 @@ body {
   box-shadow: 0 20px 30px -7px rgba(0, 0, 0, 0.5);
 }
 
+
 .current-page {
   background-color: orange;
 }
+
 
 .topnav a {
   float: left;
@@ -33,6 +59,11 @@ body {
   text-decoration: none;
   font-size: 18px;
   animation-duration: 1.5s;
+}
+
+.header-with-shadow {
+  overflow: hidden;
+  background-color: #333;
 }
 
 .topnav a:hover {
@@ -51,7 +82,7 @@ body {
 
 .user-info {
   color: white;
-  margin-right: 20px; /* Marge à droite pour l'espacement */
+  margin-right: 20px; 
   font-size: 16px;
 }
 
@@ -77,7 +108,7 @@ body {
   }
 }
 
-  /* Dropdown Button */
+
 .dropbtn {
   color: white;
   padding: auto;
@@ -86,18 +117,17 @@ body {
   cursor: pointer;
 }
 
-/* Dropdown button on hover & focus */
+
 .dropbtn:hover, .dropbtn:focus {
   background-color: #F4bc5b;
 }
 
-/* The container <div> - needed to position the dropdown content */
+
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: relative;
@@ -108,7 +138,7 @@ body {
 
 }
 
-/* Links inside the dropdown */
+
 .dropdown-content a {
   color: white;
   padding: 14px 14px;
@@ -116,10 +146,10 @@ body {
   display: flex;
 }
 
-/* Change color of dropdown links on hover */
+
 .dropdown-content a:hover {background-color: #F4bc5b;}
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+
 .show {display:block;}
 
 .connectBtn {
@@ -348,7 +378,6 @@ body {
 
 
 
-/*==============================================*/
 @keyframes active-status {
   0% {
     background-color: var(--online-status);
@@ -371,13 +400,13 @@ body {
 @media screen and (max-width: 600px) {
   .button-message,
   .connectBtn {
-    flex-direction: column; /* Afficher les boutons en colonne sur les petits écrans */
-    text-align: center; /* Centrer le texte */ /* Espacement vertical entre les boutons */
+    flex-direction: column; 
+    text-align: center; 
   }
 }
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
-/* PEN STYLES ========== */
+
 
 .grid-container {
   width: 80%;
@@ -629,18 +658,7 @@ body {
 }
 
 
-body {
-  background-color: #333;
-  color: #fff;
-  font-family: "Muli", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: auto;
-  position: relative;
-  width: 100%;
-}
+
 
 #game-container {
 width: 97vw;
@@ -650,7 +668,7 @@ background-color: #121212;
 padding: 20px;
 border-radius: 10px;
 box-shadow: 0 0 10px #F4bc5b;
-position: relative; /* Permet de positionner les boutons enfants correctement */
+position: relative; 
 }
 
 h1 {
@@ -683,11 +701,11 @@ height: 60%;
 }
 
 #player-section {
-text-align: right; /* Pour afficher les cartes du joueur à droite */
+text-align: right;
 }
 
 #dealer-section {
-text-align: left; /* Pour afficher les cartes du croupier à gauche */
+text-align: left; 
 }
 
 #player-cards img,
@@ -702,7 +720,7 @@ color: #fff;
 
 .action-buttons {
 position: absolute;
-bottom: 30px; /* Ajustez cette valeur selon vos besoins */
+bottom: 30px; 
 left: 50%;
 transform: translateX(-50%);
 }
@@ -725,28 +743,28 @@ right: 20px;
 position: relative;
 top: 50%;
 left: 50%;
-transform: translate(-50%, calc(-50% + 60px)); /* ajustez la valeur 40px selon vos besoins */
+transform: translate(-50%, calc(-50% + 60px)); 
 text-align: center;
 size: 2rem;
 }
 
 .card-img {
-width: 15%; /* Taille des cartes en pourcentage de la largeur de l'écran */
-max-width: 100px; /* Taille maximale des cartes */
-height: auto; /* Hauteur automatique pour conserver les proportions */
+width: 15%; 
+max-width: 100px; 
+height: auto; 
 }
 
 @media screen and (max-width: 600px) {
 #dealer-cards {
-  flex-direction: row; /* Affichage des cartes du croupier en ligne */
-  align-items: center; /* Alignement des cartes du croupier au centre */
-  margin-bottom: 20px; /* Espacement entre les cartes du croupier et du joueur */
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px; 
 }
 
 #player-cards {
-  flex-direction: row; /* Affichage des cartes du joueur en ligne */
-  align-items: center; /* Alignement des cartes du joueur au centre */
-  margin-top: 20px; /* Espacement entre les cartes du croupier et du joueur */
+  flex-direction: row; 
+  align-items: center; 
+  margin-top: 20px; 
 }
 
 #player-cards img,
@@ -847,3 +865,6 @@ margin: 0 10px;
   margin-top: 20px;
   text-align: center;
 }
+
+
+
