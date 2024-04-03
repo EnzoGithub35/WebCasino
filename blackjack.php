@@ -236,19 +236,40 @@ function showStatus() {
     }
 
     document.getElementById('result').innerHTML =
-        '<div> Carte du croupier </div> : ' + dealerCardString + '<br>' +
-        '<div>Vos cartes </div> : ' + playerCardString + '<br>';
+        '<div class="croupier">Croupier</div> : ' + dealerCardString +  '|' +
+        '<div class="vous">Vous</div>' + playerCardString;
 
-    if (gameOver) {
-        if (playerWon) {
-            document.getElementById('result').innerHTML += "<div>Victoire !</div>";
-            sendScoresToServer();
-        } else {
-            document.getElementById('result').innerHTML += "<div '>Défaite</div>";
-            sendScoresToServer();
-        }
-        document.getElementById('result').innerHTML += '';
+        var croupier = document.querySelector('.croupier');
+        croupier.style.position = 'absolute';
+        croupier.style.left = '25vw';
+        croupier.style.top = '15vh';
+        croupier.style.transform = 'translateX(-50%)';
+        croupier.style.textAlign = 'center';
+
+        var vous = document.querySelector('.vous');
+        vous.style.position = 'absolute';
+        vous.style.right = '20vw';
+        vous.style.top = '15vh';
+        vous.style.transform = 'translateX(-50%)';
+        vous.style.textAlign = 'center';
+
+  if (gameOver) {
+    if (playerWon) {
+        document.getElementById('result').innerHTML += "<div class='resultat'>Victoire !</div>";
+        sendScoresToServer();
+    } else {
+        document.getElementById('result').innerHTML += "<div class='resultat'>Défaite</div>";
+        sendScoresToServer();
     }
+    document.getElementById('result').innerHTML += '';
+}
+var resultatDiv = document.querySelector('.resultat');
+resultatDiv.style.position = 'absolute';
+resultatDiv.style.left = '50%';
+resultatDiv.style.bottom = '25vh';
+resultatDiv.style.transform = 'translateX(-50%)';
+resultatDiv.style.textAlign = 'center';
+
 }
   function startGame() {
     gameStarted = true;
