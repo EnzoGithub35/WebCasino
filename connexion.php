@@ -106,13 +106,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             } else {
                 $error_message = "Identifiants incorrects. Veuillez réessayer.";
+                echo $error_message;
             }
         } else {
-
             $error_message = "Erreur lors de la tentative de connexion. Veuillez réessayer.";
+            echo $error_message;
         }
     } else {
         $error_message = "Erreur lors de la tentative de connexion. Veuillez réessayer.";
+        echo $error_message;
     }
 }
 ?>

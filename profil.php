@@ -206,6 +206,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     </div>
     
 <?php
+
 $sql = "SELECT GameName, COUNT(*) AS gameCount
         FROM games_history
         WHERE IdJoueur = :idJoueur

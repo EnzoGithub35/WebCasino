@@ -44,7 +44,7 @@ if (session_status() == PHP_SESSION_NONE) {
             
         <?php else : ?>
             <a href="connexion.php">Connexion</a>
-            <a href="connexion_test.php">Connexion TEST</a>
+            <a href="connexion_test.php">Connexion hash test</a>
             <a href="inscription.php">Inscription</a>
         <?php endif; ?>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">

@@ -68,3 +68,5 @@ def inserer_commentaire(description, auteur, date_creation):
     cursor.execute(sql, (description, auteur, date_creation))
     conn.commit()
     conn.close()
+
+  
