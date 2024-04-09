@@ -236,22 +236,24 @@ function showStatus() {
     }
 
     document.getElementById('result').innerHTML =
-        '<div class="croupier">Croupier</div> : ' + dealerCardString +  '|' +
-        '<div class="vous">Vous</div>' + playerCardString;
+        '<div class="croupier">Croupier :</div> ' + dealerCardString +  '|' +
+        '<div class="vous">Vous :</div>' + playerCardString;
 
         var croupier = document.querySelector('.croupier');
         croupier.style.position = 'absolute';
-        croupier.style.left = '25vw';
-        croupier.style.top = '15vh';
+        croupier.style.left = '18vw';
+        croupier.style.top = '12vh';
         croupier.style.transform = 'translateX(-50%)';
         croupier.style.textAlign = 'center';
+        croupier.style.fontSize = '2rem';
 
         var vous = document.querySelector('.vous');
         vous.style.position = 'absolute';
-        vous.style.right = '20vw';
-        vous.style.top = '15vh';
+        vous.style.right = '18vw';
+        vous.style.top = '12vh';
         vous.style.transform = 'translateX(-50%)';
         vous.style.textAlign = 'center';
+        vous.style.fontSize = '2rem';
 
   if (gameOver) {
     if (playerWon) {
@@ -269,6 +271,7 @@ resultatDiv.style.left = '50%';
 resultatDiv.style.bottom = '25vh';
 resultatDiv.style.transform = 'translateX(-50%)';
 resultatDiv.style.textAlign = 'center';
+resultatDiv.style.fontSize = '3rem';
 
 }
   function startGame() {
