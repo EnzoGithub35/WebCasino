@@ -1,16 +1,6 @@
     <?php
     
-    $serveur = "bdd.wouafwouaf.ovh";
-    $utilisateur = "wouafwouaf_casino";
-    $mdp = "!2jSKgjU05HvN6TA";
-    $basededonnees = "wouafwouaf_casino";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-
-    if ($conn->connect_error) {
-        die("Connexion échouée: " . $conn->connect_error);
-    }
+    include "config.php";
 
 
     $data = json_decode(file_get_contents('php://input'), true);

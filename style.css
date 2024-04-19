@@ -15,28 +15,12 @@ body {
 }
 
 .header-with-shadow {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
   position: relative; 
   z-index: 2;
 }
 
-.bgAccueil {
-  
-  background-image: url("images/BG1.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100%;
-  min-width: 1024px;
-	
 
-  width: 100%;
-  height: auto;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-}
 
 .topnav {
   overflow: hidden;
@@ -180,7 +164,7 @@ body {
 }
 
 .connectBtn:hover {
-  transform: translate(0px, 2.2px);
+  transform: translate(0px, -3px);
 }
 
 .connectBtn:active {
@@ -192,7 +176,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* Espacement horizontal entre les boutons */
+  gap: 10px; 
 }
 
 #btn-message {
@@ -228,7 +212,23 @@ body {
   position: fixed;
   top: 0%;
   right: 2%;
-  z-index: 9999; /* Pour s'assurer que le bouton soit au-dessus des autres éléments */
+  z-index: 9999;
+}
+
+.shifumi-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 100%;
 }
 
 .button-message:hover {
@@ -574,18 +574,7 @@ body {
 * {
     box-sizing: border-box;
 }
-body {
-    background-color: #333;
-    color: #fff;
-    font-family: "Muli", sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: auto;
-    position: relative;
-    width: 100%;
-}
+
 .container {
     background-color: rgba(0, 0, 0, 0.4);
     padding: 20px 40px;
@@ -669,6 +658,7 @@ padding: 20px;
 border-radius: 10px;
 box-shadow: 0 0 10px #F4bc5b;
 position: relative; 
+margin-top: 20px;
 }
 
 h1 {
@@ -776,6 +766,41 @@ margin: 0 10px;
 }
 
 
+.shifumi-container {
+
+    width: 97vw;
+    height: 80vh;
+    text-align: center;
+    background-color: #121212;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #F4bc5b;
+    position: relative; 
+    margin-top: 20px;
+  
+}
+
+.btn_choix {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0 10px;
+}
+
+.pfc-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border-color: #eabc5b;
+}
+
+.result-img {
+  width: 50px; 
+  height: 50px; 
+  margin: 10px; 
+}
 
 
 .bodyPoF {
@@ -788,6 +813,9 @@ margin: 0 10px;
   align-items: center;
   height: 100vh;
 }
+
+
+
 
 .h1PoF {
   text-align: center;
@@ -806,6 +834,7 @@ margin: 0 10px;
   flex-direction: column;
   justify-content: space-between;
   color: white;
+  margin-top: 20px;
 }
 
 .labelPoF {

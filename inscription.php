@@ -7,7 +7,7 @@
     <title>Inscription</title>
 </head>
 <body>
-
+<?php include_once "navbar.php"; ?>
 
 <?php
 // Inclure le fichier de configuration avec les informations de connexion à la base de données
@@ -54,18 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-
-
-<header style="width: 100%;">
-        <div class="topnav" id="myTopnav">
-            <a href="index.php" >Accueil</a>
-            <a href="connexion.php">Connexion</a>
-            <a href="inscription.php" class="current-page">Inscription</a>
-            </a>
-          </div>
-    
-    </header> 
         
 
 <main class="">

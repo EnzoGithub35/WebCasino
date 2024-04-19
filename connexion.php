@@ -18,43 +18,8 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 <body>
 
+<?php include_once "navbar.php"; ?>
 
-<header style="width: 100%;">
-    <div class="topnav" id="myTopnav">
-    <a href="index.php" >Accueil</a>
-        <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
-            <a onclick="myFunction2()" class="dropbtn">Jeux</a>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="jeux.php">Page des jeux</a>
-                <a href="blackjack.php">Blackjack</a>
-                <a href="shifumi.php">Shifumi</a>
-                <a href="Pile_ou_face.php">Pile ou Face</a>
-            </div>
-
-            
-            <span id="user-info" class="user-info">
-                <?php
-                $sql = "SELECT pseudo, email FROM utilisateur WHERE IdUtilisateur = :id";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(":id", $_SESSION["id"], PDO::PARAM_INT);
-                $stmt->execute();
-                $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-                ?>
-            </span>
-
- 
-            
-        <?php else : ?>
-            <a class="current-page" href="connexion.php">Connexion</a>
-            <a href="inscription.php">Inscription</a>
-        <?php endif; ?>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
-</header>
 
 <main>
   
