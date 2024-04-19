@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="shifumi-container">
     <?php if (!isset($_POST['choix']) || empty($_POST['choix'])) : ?>
         <form method="post" action="shifumi.php">
-            <label for="choix">Choisissez votre coup :</label>
+            <strong><label for="choix">Choisissez votre coup :</label> </strong>
             <div class="bottom">
                 <?php foreach (["pierre", "feuille", "ciseaux"] as $option) : ?>
                     <button class="btn_choix" type="submit" name="choix" value="<?= $option ?>">
