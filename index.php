@@ -72,7 +72,7 @@ if (session_status() == PHP_SESSION_NONE) {
 </div>
 
 <script>
-var images = ["images/BG1.webp", "images/BG2.jpg", "images/BG1.avif", "images/BG4.jpg", "images/BGbj.jpg"];
+var images = ["images/BG1.webp", "images/BG2.jpg", "images/BG1.avif", "images/bg4.jpg", "images/BGbj.jpg"];
 var currentIndex = 0;
 
 function changeBackground() {

@@ -38,7 +38,7 @@
     
 </header>
 
-<script src="script.js"></script>
+
 
 
 
