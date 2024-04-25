@@ -40,8 +40,18 @@ if (session_status() == PHP_SESSION_NONE) {
      <button class="btn">Connexion</button>  
      <p class="text">Pas de compte ? <a href="inscription.php">Inscrivez vous</a> </p> 
      </div>  
+     <h1>
+    pseudo : Lyxow <br>
+    mdp : azerty<br>
+    (le temps de réparer <br>
+    un bug dans la bdd)
+</h1>
   <script src="script.js"></script>
+
+
 </main>
+
+
 
 
 </body>
