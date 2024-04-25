@@ -1,36 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">  
-    <title>Inscription</title>
-</head>
-<body>
-<?php include_once "navbar.php"; ?>
-
 <?php
-// Inclure le fichier de configuration avec les informations de connexion à la base de données
+
 include 'config.php';
 session_start();
 
-// Vérification des données postées
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupération des valeurs postées
+
     $email = $_POST["email"];
-    $mdp = $_POST["mdp"]; // Mot de passe en texte clair
+    $mdp = $_POST["mdp"]; 
 
-    // Hasher le mot de passe
-    
 
-    // Autres valeurs postées
     $pseudo = $_POST["pseudo"];
     $Nom = $_POST["Nom"];
     $Prenom = $_POST["Prenom"];
+    
     $_SESSION['pseudo'] = $_POST["pseudo"];
     $AdresseIP = $_SERVER['REMOTE_ADDR'];
 
-    // Requête SQL pour vérifier si l'email ou le pseudo existe déjà
     $verification_requete = "SELECT COUNT(*) AS count FROM utilisateur WHERE email = '$email' OR pseudo = '$pseudo'";
     $resultat_verification = $conn->query($verification_requete);
     
@@ -39,8 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $compte = $row['count'];
 
         if ($compte == 0) {
-            // Aucun utilisateur avec cet email ou ce pseudo n'a été trouvé, procédez à l'inscription
-            $requete = "INSERT INTO utilisateur (pseudo, Nom, Prenom, email, DateCreationCompte, mdp, AdresseIP, coins) VALUES ('$pseudo', '$Nom', '$Prenom', '$email', NOW(), '$mdpHash',  '$AdresseIP', 100)";
+            $requete = "INSERT INTO utilisateur (pseudo, Nom, Prenom, email, DateCreationCompte, mdp, AdresseIP, coins) VALUES ('$pseudo', '$Nom', '$Prenom', '$email', NOW(), '$mdp',  '$AdresseIP', 100)";
             
             if ($conn->query($requete) === TRUE) {
                 header("Location: connexion.php");
@@ -54,7 +39,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">  
+    <title>Inscription</title>
+</head>
+<body>
+<?php include_once "navbar.php"; ?>
+
+
 
 <main class="">
     <div class="container" style="margin-top: 5vh;">
@@ -81,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="mdp">Mot de passe :</label>
             </div>
             <input class="btn" type="submit" name="valider" value="Valider">
-            <p class="text">Deja un compte ? <a href="connexion.php">Connectez vous</a> </p> 
+            <p class="text">Déjà un compte ? <a href="connexion.php">Connectez-vous</a> </p> 
         </form>
     </div>
 
