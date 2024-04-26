@@ -82,8 +82,8 @@ body {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 10;
+    top: 10;
   }
   .topnav.responsive a,div {
     float: none;
@@ -91,6 +91,12 @@ body {
     text-align: left;
   }
 }
+
+.mobile-nav-icon {
+  display: none; /* Par défaut, masquer l'icône */
+}
+
+
 
 
 .dropbtn {

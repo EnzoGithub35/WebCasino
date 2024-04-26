@@ -1,7 +1,10 @@
 <body> 
 <header style="width: 100%;" class="header-with-shadow">
+
+
+    <!-- Votre navbar existante -->
     <div class="topnav" id="myTopnav">
-    <a href="index.php">Accueil</a>
+        <a href="index.php">Accueil</a>
         <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
             <a onclick="myFunction2()" class="dropbtn">Jeux</a>
             <div id="myDropdown" class="dropdown-content">
@@ -10,8 +13,6 @@
                 <a href="shifumi.php">Shifumi</a>
                 <a href="Pile_ou_face.php">Pile ou Face</a>
             </div>
-
-            
             <span id="user-info" class="user-info">
                 <?php
                 $sql = "SELECT pseudo FROM utilisateur WHERE IdUtilisateur = :id";
@@ -19,23 +20,17 @@
                 $stmt->bindParam(":id", $_SESSION["id"], PDO::PARAM_INT);
                 $stmt->execute();
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
                 ?>
             </span>
-
- 
-            
         <?php else : ?>
             <a href="connexion.php">Connexion</a>
             <a href="connexion_test.php">Connexion hash test</a>
             <a href="inscription.php">Inscription</a>
         <?php endif; ?>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
             <i class="fa fa-bars"></i>
         </a>
     </div>
-    
 </header>
 
 <script >
@@ -48,6 +43,8 @@ function myFunction() {
     x.className = "topnav";
   }
 }
+
+
 
 
   function myFunction2() {
