@@ -103,7 +103,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         echo "Erreur : " . $e->getMessage();
     }
 } else {
-    echo '<a href="connexion.php"><button id="btn-message" class="button-message">
+    echo '<a href="connexion.php"><button id="btn-message" class="button-message" style="position: fixed">
     <div class="content-avatar">
         <div class="status-user"></div>
         <div class="avatar">

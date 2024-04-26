@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             if ($conn->query($requete) === TRUE) {
                 // Rediriger vers la page de connexion après la modification
-                header("Location: connexion.php");
+                header("Location: jeux.php");
                 exit();
             } else {
                 echo "Erreur lors de la modification des identifiants : " . $conn->error;
