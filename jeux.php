@@ -33,7 +33,7 @@ if (session_status() == PHP_SESSION_NONE) {
       <div class="inner">
         <a href="shifumi.php" class="test_click box-image-2">
           <div class="flex_this">
-            <h3 class="title"> shifumi</h3>
+            <h3 class="title"> Shifumi</h3>
             <span class="test_link">Jouez</span>
           </div>
         </a>

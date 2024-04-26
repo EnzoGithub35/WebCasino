@@ -45,28 +45,11 @@ unused css : retiré le css inutile
 RR#Ermf(RB)HB$5aag
 
 
-            <!-- Formulaire pour ajouter un commentaire -->
-			<form action="{{ url_for('DemoView:ajouter_commentaire', id_contact=groupe[0]) }}" method="post">
-				<textarea name="description" rows="4" cols="50"></textarea><br>
-				<input type="submit" value="Ajouter commentaire">
-			</form>
-
-                @route('/ajouter_commentaire/<int:id_contact>/', methods=['POST'])
-    def ajouter_commentaire(self, id_contact):
-        if request.method == 'POST':
-            description = request.form['description']
-            auteur = session['mail']
-            date_creation = datetime.now().strftime("%Y-%m-%d")
-            database.inserer_commentaire(description, auteur, date_creation)
-            return redirect(url_for('DemoView.add_commentaire', id_contact=id_contact))
+IDEE POUR casino :
+modifier les informations de son compte 
+développer la page index comme une page web
+trouver des idées pour la navbar (et la modifier)
 
 
-def inserer_commentaire(description, auteur, date_creation):
-    conn = sqlite3.connect('crm.sqlite')
-    cursor = conn.cursor()
-    sql = "INSERT INTO commentaire (Description, Auteur, Date_de_creation) VALUES (?, ?, ?)"
-    cursor.execute(sql, (description, auteur, date_creation))
-    conn.commit()
-    conn.close()
 
   
