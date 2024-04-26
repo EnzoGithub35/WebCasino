@@ -107,7 +107,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         <p>Nombre de coins: <?php echo $userInfo["coins"]; ?></p>
     </div>
      <button><a href="classement.php"> classement </a></button>
-    <!-- <button><a href="modif-user.php"> modifié vos identifiants </a></button> -->
+    <button><a href="modif-user.php"> modifié vos identifiants </a></button>
      
     
     <div>
