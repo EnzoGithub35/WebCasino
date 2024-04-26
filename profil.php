@@ -98,6 +98,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         <p>Email: <?php echo $userInfo["email"]; ?></p>
         <p>Nombre de coins: <?php echo $userInfo["coins"]; ?></p>
     </div>
+     <button><a href="classement.php"> classement </a></button>
     
     <div>
         <h2>Historique des parties de Blackjack</h2>
