@@ -157,7 +157,7 @@ body {
 }
 
 .connectBtn {
-  position: fixed;
+  position: absolute;
   top: 0%;
   right: calc(12% + 5px); /* Ajoutez 5 pixels de décalage à la droite */
   z-index: 9999; /* Pour s'assurer que le bouton soit au-dessus des autres éléments */
@@ -209,7 +209,7 @@ body {
 }
 
 .button-message {
-  position: fixed;
+  position: absolute;
   top: 0%;
   right: 2%;
   z-index: 9999;
@@ -397,6 +397,7 @@ body {
   .connectBtn {
     flex-direction: column; 
     text-align: center; 
+    display: none;
   }
 }
 
@@ -825,12 +826,12 @@ margin: 0 10px;
 }
 
 .formPoF {
-  height: 75vh;
   width: 97vw;
-  background-color: #333;
+  height: 80vh;
+  background-color: #121212;
   padding: 20px;
   border-radius: 10px;
-  box-shadow:0 0 40px #F4bc5b;
+  box-shadow:0 0 10px #F4bc5b;
   text-align: center;
   display: flex;
   flex-direction: column;
