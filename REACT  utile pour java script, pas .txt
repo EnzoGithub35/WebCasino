@@ -49,7 +49,11 @@ IDEE POUR casino :
 modifier les informations de son compte 
 développer la page index comme une page web
 trouver des idées pour la navbar (et la modifier)
-
+faire plus de sécurité :
+    -réessayer le hashage des mots de passe (pour éviter de les avoir en claire dans la BDD...)
+    -impossible de jouer sans etre connnecté, éviter de se balader sur le site juste 
+     en mettant jeux.php dans le lien
+    
 
 
   

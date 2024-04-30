@@ -23,7 +23,8 @@ if (session_status() == PHP_SESSION_NONE) {
       <div class="inner">
         <a href="blackjack.php" class="test_click box-image-1">
           <div class="flex_this ">
-            <h3 class="title"> Blackjack</h3>
+            <h3 class="title"> Blackjack <p  style="font-size:small"> (en JavaScript)</p> </h3>
+            
             <span class="test_link">Jouez</span>
           </div>
         </a>
