@@ -94,7 +94,7 @@ body {
 }
 
 .mobile-nav-icon {
-  display: none; /* Par défaut, masquer l'icône */
+  display: none; 
 }
 
 
@@ -166,8 +166,8 @@ body {
 .connectBtn {
   position: absolute;
   top: 0%;
-  right: calc(12% + 5px); /* Ajoutez 5 pixels de décalage à la droite */
-  z-index: 9999; /* Pour s'assurer que le bouton soit au-dessus des autres éléments */
+  right: calc(12% + 5px); 
+  z-index: 9999; 
 }
 
 .connectBtn:hover {
@@ -402,9 +402,24 @@ body {
 @media screen and (max-width: 600px) {
   .button-message,
   .connectBtn {
-    flex-direction: column; 
-    text-align: center; 
-    display: none;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center; 
+    display: flex;
+    font-size: 0.8rem;
+    position: absolute;
+    left: 30%;
+  }
+  
+  .button-message {
+    margin-right: 10px;
+    left: 60%;
+  }
+  
+  .connectBtn,
+  .button-message {
+    width: 100px; 
+    height: 40px; 
   }
 }
 
