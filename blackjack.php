@@ -190,7 +190,7 @@ resultatDiv.style.fontSize = '3rem';
     shuffleDeck();
 
     playerCards = [getNextCard(), getNextCard()];
-    dealerCards = [getNextCard(), getNextCard()];
+    dealerCards = [getNextCard()];
 
     showStatus();
   }

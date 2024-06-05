@@ -234,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `Nom` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
   `Prenom` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
-  `mdp` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
+  `mdp` varchar(300) COLLATE utf8mb4_general_ci NOT NULL,
   `DateCreationCompte` timestamp NULL DEFAULT NULL,
   `AdresseIP` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `coins` int NOT NULL,

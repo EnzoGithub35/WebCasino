@@ -1,15 +1,11 @@
 <?php
-
 include 'config.php';
 session_start();
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $email = $_POST["email"];
     $mdp = $_POST["mdp"]; 
-
-
     $pseudo = $_POST["pseudo"];
     $Nom = $_POST["Nom"];
     $Prenom = $_POST["Prenom"];
@@ -25,7 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $compte = $row['count'];
 
         if ($compte == 0) {
-            $requete = "INSERT INTO utilisateur (pseudo, Nom, Prenom, email, DateCreationCompte, mdp, AdresseIP, coins) VALUES ('$pseudo', '$Nom', '$Prenom', '$email', NOW(), '$mdp',  '$AdresseIP', 100)";
+            // Hacher le mot de passe
+            $hashed_password = password_hash($mdp, PASSWORD_BCRYPT);
+
+            $requete = "INSERT INTO utilisateur (pseudo, Nom, Prenom, email, DateCreationCompte, mdp, AdresseIP, coins) VALUES ('$pseudo', '$Nom', '$Prenom', '$email', NOW(), '$hashed_password', '$AdresseIP', 100)";
             
             if ($conn->query($requete) === TRUE) {
                 header("Location: connexion.php");
@@ -50,22 +49,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <?php include_once "navbar.php"; ?>
 
-
-
 <main class="">
     <div class="container" style="margin-top: 5vh;">
-    <h1 style="color: #F4bc5b">Inscription</h1>  
-    <form method="post" action="">
+        <h1 style="color: #F4bc5b">Inscription</h1>  
+        <form method="post" action="">
             <div class="form-control">    
-                <input type="text"  name="pseudo" required value="">
+                <input type="text" name="pseudo" required value="">
                 <label for="pseudo">Pseudo :</label>
             </div>
             <div class="form-control">    
-                <input type="text"  name="Nom" required value="">
+                <input type="text" name="Nom" required value="">
                 <label for="Nom">Nom :</label>
             </div>
             <div class="form-control">    
-                <input type="text"  name="Prenom" required value="">
+                <input type="text" name="Prenom" required value="">
                 <label for="Prenom">Prénom :</label>
             </div>
             <div class="form-control">
@@ -81,11 +78,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 
-
-        <script src="script.js"></script>
-        
-        
-
-
+    <script src="script.js"></script>
 </body>
 </html>
