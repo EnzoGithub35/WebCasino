@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+
 <style>
     .footer {
     display: flex;
@@ -259,7 +259,7 @@
   
     </div>
     <div class="social-card" >
-        <button class="Btn github">
+        <buttons class="Btn github">
           <span class="svgContainer">
             <svg height="1.6em" viewBox="0 0 496 512" fill="white">
               <path
@@ -268,9 +268,9 @@
             </svg>
           </span>
           <span class="BG"></span>
-        </button>
+        </buttons>
       
-        <button class="Btn whatsapp">
+        <buttons class="Btn whatsapp">
           <span class="svgContainer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -284,9 +284,9 @@
             </svg>
           </span>
           <span class="BG"></span>
-        </button>
+        </buttons>
       
-        <button class="Btn linkdin">
+        <buttons class="Btn linkdin">
           <span class="svgContainer">
             <svg
               fill="white"
@@ -301,9 +301,9 @@
             </svg>
           </span>
           <span class="BG"></span>
-        </button>
+        </buttons>
       
-        <button class="Btn discord">
+        <buttons class="Btn discord">
           <span class="svgContainer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -317,10 +317,10 @@
             </svg>
           </span>
           <span class="BG"></span>
-        </button>
+        </buttons>
       </div>
       
   </footer>
-</body>
+
 </html>
 

@@ -18,21 +18,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hacher le mot de passe
     $hashed_password = password_hash($mdp, PASSWORD_DEFAULT);
 
-    $verification_requete = "SELECT COUNT(*) AS count FROM utilisateur WHERE email = '$email' OR pseudo = '$pseudo'";
-    $resultat_verification = $conn->query($verification_requete);
+    $current_user_id = $_SESSION['id'];
+    $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM utilisateur WHERE (email = ? OR pseudo = ?) AND IdUtilisateur != ?");
+    $stmt->bind_param("ssi", $email, $pseudo, $current_user_id);
+    $stmt->execute();
+    $resultat_verification = $stmt->get_result();
 
     if ($resultat_verification) {
         $row = $resultat_verification->fetch_assoc();
         $compte = $row['count'];
 
         if ($compte == 0) {
-            $requete = "INSERT INTO utilisateur (pseudo, Nom, Prenom, email, DateCreationCompte, mdp, AdresseIP, coins) VALUES ('$pseudo', '$Nom', '$Prenom', '$email', NOW(), '$hashed_password',  '$AdresseIP', 100)";
+            $stmt = $conn->prepare("UPDATE utilisateur SET pseudo = ?, Nom = ?, Prenom = ?, email = ?, mdp = ?, AdresseIP = ? WHERE IdUtilisateur = ?");
+            $stmt->bind_param("ssssssi", $pseudo, $Nom, $Prenom, $email, $hashed_password, $AdresseIP, $current_user_id);
 
-            if ($conn->query($requete) === TRUE) {
-                header("Location: connexion.php");
+            if ($stmt->execute()) {
+                header("Location: index.php");
                 exit();
             } else {
-                echo "Erreur lors de l'inscription : " . $conn->error;
+                echo "Erreur lors de la modification : " . $conn->error;
             }
         } else {
             echo "L'utilisateur avec cet email ou pseudo existe déjà.";
@@ -53,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <main class="">
     <div class="container" style="margin-top: 5vh;">
-    <h1 style="color: #F4bc5b">Inscription</h1>  
+    <h1 style="color: #F4bc5b">Modifiez</h1>  
     <form method="post" action="">
             <div class="form-control">    
                 <input type="text"  name="pseudo" required value="">
@@ -76,7 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="mdp">Mot de passe :</label>
             </div>
             <input class="btn" type="submit" name="valider" value="Valider">
-            <p class="text">Déjà un compte ? <a href="connexion.php">Connectez-vous</a> </p> 
         </form>
     </div>
 

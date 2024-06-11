@@ -1,5 +1,6 @@
 <body> 
 <header style="width: 100%;" class="header-with-shadow">
+<link rel="stylesheet" type="text/css" href="style.css">
 
 
     <!-- Votre navbar existante -->
@@ -24,7 +25,7 @@
             </span>
         <?php else : ?>
             <a href="connexion.php">Connexion</a>
-            <a href="connexion_test.php">Connexion hash test</a>
+            <a href="connexion_test.php">Connexion (sans hash, test)</a>
             <a href="inscription.php">Inscription</a>
         <?php endif; ?>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>

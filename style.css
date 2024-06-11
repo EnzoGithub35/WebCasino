@@ -14,6 +14,11 @@ body {
   margin: 0;
 }
 
+footer {
+  width: 100%;
+  width: 100%;
+}
+
 .header-with-shadow {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
   position: relative; 
@@ -689,12 +694,14 @@ background-color: #F4bc5b;
 color: #fff;
 border: none;
 border-radius: 5px;
-padding: 10px 20px;
+
 font-size: 18px;
 margin: 5px;
 cursor: pointer;
 transition: background-color 0.3s ease;
 }
+
+
 
 button:hover {
 background-color: #Fabc5b;
