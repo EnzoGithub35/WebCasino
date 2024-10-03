@@ -1,6 +1,4 @@
-site en ligne directement sur :
 
-https://wouafwouaf.ovh/casino/index.php
 
 projet SLAM à l'EPSI.
 
