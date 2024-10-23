@@ -203,22 +203,22 @@
             points: points
         };
 
-        fetch('{{ route('blackjack') }}', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Scores envoyés avec succès !');
-    })
-    .catch((error) => {
-        console.error('Une erreur s\'est produite lors de l\'envoi des scores.', error);
-    });
-        }
+        fetch("{{ route('blackjack') }}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Scores envoyés avec succès !');
+        })
+        .catch((error) => {
+            console.error('Une erreur s\'est produite lors de l\'envoi des scores.', error);
+        });
+    }
 </script>
 
 </body>

@@ -31,7 +31,7 @@ class AuthController extends Controller
         $user = Utilisateur::where('pseudo', $pseudo_email)->orWhere('email', $pseudo_email)->first();
         if ($user && Hash::check($mdp, $user->mdp)) {
             Auth::login($user);
-            return redirect()->route('home');
+            return redirect()->route('home')->with('LoginSuccesfull', 'Connexion réussie.');
         } else {
             return redirect()->route('login')->with('error_message', 'Identifiants incorrects. Veuillez réessayer.');
         }
@@ -41,7 +41,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         Session::flush();
-        return redirect()->route('home');
+        return redirect()->route('home')->with('deconnect_message', 'Vous êtes déconnecté.');
     }
 
     public function profile()
@@ -93,10 +93,9 @@ class AuthController extends Controller
         $utilisateur->coins = 100;
 
         if ($utilisateur->save()) {
-            Session::flash('success', 'Inscription réussie. Vous pouvez maintenant vous connecter.');
-            return redirect()->route('login');
+            return redirect()->route('login')->with('RegisterSuccesfull', 'Inscription réussie. Vous pouvez maintenant vous connecter.');
         } else {
-            return back()->with('error', 'Erreur lors de l\'inscription. Veuillez réessayer.');
+            return redirect()->route('register')->with('RegisterError', 'Erreur lors de l\'inscription. Veuillez réessayer.');
         }
     }
 }

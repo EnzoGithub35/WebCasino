@@ -185,8 +185,11 @@ class UtilisateurController extends Controller
         // Save user to database
         $user->save();
 
-        // Redirect to route
-        return redirect()->route('jeux');
+        if ($user->save()) {
+            return redirect()->route('jeux')->with('EditSuccesfull', 'Profil mis à jour avec succès.');
+        } else {
+            return redirect()->route('edit')->with('EditError', 'Erreur lors de la mise à jour du profil.');
+        }
     }
 }
 
