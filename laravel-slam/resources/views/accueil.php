@@ -58,7 +58,7 @@
 
 <div class="hero-image">
   <div class="hero-text">
-    <h1 style="font-size: 5rem;">Light Casino</h1>
+    <h1 style="font-size: 5rem;">Light CasinoOOO</h1>
     <p style="font-size: 2rem;">Un Casino, mais en light</p>
     <p style="font-size: 0.5rem;">(je cherche encore un nom pour le casino)</p>
   </div>
