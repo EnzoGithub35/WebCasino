@@ -21,6 +21,6 @@
 
     @include('navbar')
     @include('accueil')
-</body>
+</body> 
 @include('footer')
 </html>
