@@ -9,7 +9,7 @@
 
 
 .hero-image {
-  background-image: url("images/BG1.webp");
+  background-image: url("public/images/BG1.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
