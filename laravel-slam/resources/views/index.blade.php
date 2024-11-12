@@ -11,8 +11,13 @@
     <head>
         <meta charset="UTF-8">
         <title>Accueil</title>
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}"> 
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{{ 'style.css' }}"> 
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('style.css') }}">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="{{ 'css/style.css' }}"> 
+        <link rel="stylesheet" href="css/style.css">
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <body class="body">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
