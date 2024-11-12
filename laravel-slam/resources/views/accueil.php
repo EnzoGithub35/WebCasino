@@ -3,14 +3,13 @@
 <header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="style.css">
+
     <title>Document</title>
     <style>
 
 
 .hero-image {
-    background-image: url("images/BG1.webp");
+  background-image: url("images/BG1.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -59,7 +58,7 @@
 
 <div class="hero-image">
   <div class="hero-text">
-    <h1 style="font-size: 5rem;">Light CasinoOOO</h1>
+    <h1 style="font-size: 5rem;">Light Casino</h1>
     <p style="font-size: 2rem;">Un Casino, mais en light</p>
     <p style="font-size: 0.5rem;">(je cherche encore un nom pour le casino)</p>
   </div>
