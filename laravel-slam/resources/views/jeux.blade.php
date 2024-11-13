@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+@endif
     <title>Document</title>
 </head>
 @include('navbar')
@@ -18,7 +21,7 @@
       <div class="inner">
         <a href="{{ route('blackjack') }}" class="test_click box-image-1">
           <div class="flex_this ">
-            <h3 class="title"> Blackjack <p  style="font-size:small"> (en JavaScript)</p> </h3>
+            <h3 class="title"> Blackjack </h3>
             
             <span class="test_link">Jouez</span>
           </div>
