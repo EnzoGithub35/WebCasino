@@ -5,7 +5,7 @@
         "dev": "vite",
         "build": "vite build",
         "prod": "vite build",
-        "vercel-build": "npm run build"
+        "postinstall": "curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev --optimize-autoloader"
     },
     "devDependencies": {
         "axios": "^1.7.4",
