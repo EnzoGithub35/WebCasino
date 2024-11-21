@@ -1,7 +1,7 @@
-# Utiliser une image PHP avec FPM et Composer déjà inclus
+# Utiliser une image officielle PHP avec FPM
 FROM php:8.1-fpm
 
-# Installer les extensions PHP nécessaires pour Laravel
+# Installer les outils nécessaires
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install gd pdo pdo_mysql
 
 # Installer Composer
-RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer
 
 # Copier le code de l'application dans le conteneur
 COPY . /var/www/html
@@ -28,5 +29,5 @@ RUN composer install --no-dev --optimize-autoloader
 # Exposer le port pour l'application Laravel
 EXPOSE 10000
 
-# Lancer le serveur Laravel
+# Lancer l'application
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
