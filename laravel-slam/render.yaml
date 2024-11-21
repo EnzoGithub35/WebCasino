@@ -3,6 +3,7 @@ services:
     name: casino
     env: php
     buildCommand: |
+      apt-get update && apt-get install -y php-cli unzip curl
       curl -sS https://getcomposer.org/installer | php
       php composer.phar install --no-dev --optimize-autoloader
     startCommand: php artisan serve --host 0.0.0.0 --port 10000
